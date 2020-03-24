@@ -9,6 +9,7 @@ A **minimum viable product** version of the tool should have following basic fun
 - create, delete and assign risks to project risk registers
 - show and modify quantitative and qualitative properties of risks
 - sort risk register according to selected qualitative property
+- viewing projects and risks register items assigned to them in the web application
 
 ### Technology stack
 On the backend side, the project uses PostgreSQL database and .Net Core RESTful API. Frontend of the application is implemened using Angular. 
