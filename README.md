@@ -9,3 +9,8 @@ A **minimum viable product** version of the tool should have following basic fun
 - create, delete and assign risks to project risk registers
 - show and modify quantitative and qualitative properties of risks
 - sort risk register according to selected qualitative property
+
+### Technology stack
+On the backend side, the project uses PostgreSQL database and .Net Core RESTful API. Frontend of the application is implemened using Angular. 
+For CI/CD project uses CircleCI.
+The release version of application is supposed to use API server and database virtualized in Docker container connected in single docker-compose network with a container for frontend server (nginx with reverse proxy for API-client communication).
