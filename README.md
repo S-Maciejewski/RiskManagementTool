@@ -8,7 +8,7 @@ A **minimum viable product** version of the tool should have following basic fun
 - create and delete a project
 - create, delete and assign risks to project risk registers
 - show and modify quantitative and qualitative properties of risks
-- sort risk register according to selected qualitative property
+- sort risk register according to selected quantitative property
 - viewing projects and risks register items assigned to them in the web application
 
 ### Technology stack
