@@ -17,13 +17,6 @@ insert into public.user (id, login, password) values (2, 'Jan', 'pwd');
 insert into public.user (id, login, password) values (3, 'Kuba', 'pwd');
 insert into public.user (id, login, password) values (4, 'Seba', 'pwd');
 insert into public.user (id, login, password) values (5, 'Marcin', 'pwd');
-insert into public.user_project (user_id, project_id) values (1, 1);
-insert into public.user_project (user_id, project_id) values (2, 1);
-insert into public.user_project (user_id, project_id) values (3, 1);
-insert into public.user_project (user_id, project_id) values (4, 1);
-insert into public.user_project (user_id, project_id) values (5, 1);
-insert into public.user_project (user_id, project_id) values (1, 2);
-insert into public.user_project (user_id, project_id) values (2, 2);
 
 -- Projects, registers, risks and responses
 insert into public.project (id, name, description) values (1, 'Moon base', 'Building an operational, self sustainable moon base... on the moon!');
@@ -42,3 +35,12 @@ insert into public.risk_property (id, risk_id, name, description, quantiative_va
 insert into public.response (id, risk_id, name, description, expected_result, progress) values (1, 1, 'Kickstarter', 'Launch a kickstarter campaign!', 'Some additional funds', 'To be done');
 insert into public.response (id, risk_id, name, description, expected_result, progress) values (2, 1, 'Outsource R&D team', 'Outsource our R&D team in order to make some additional cash', 'Additional cash inflow, slower progress on our R&D projects', 'Decision to be made, client found');
 insert into public.response (id, risk_id, name, description, expected_result, progress) values (3, 2, 'Free pizza', 'Offer free pizza for life for the crew and their families', 'Some minor additional costs, possible rise in job applications for crew members', 'Is it really a good idea?');
+
+-- User - Project assignments
+insert into public.user_project (user_id, project_id) values (1, 1);
+insert into public.user_project (user_id, project_id) values (2, 1);
+insert into public.user_project (user_id, project_id) values (3, 1);
+insert into public.user_project (user_id, project_id) values (4, 1);
+insert into public.user_project (user_id, project_id) values (5, 1);
+insert into public.user_project (user_id, project_id) values (1, 2);
+insert into public.user_project (user_id, project_id) values (2, 2);
