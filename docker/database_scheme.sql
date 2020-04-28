@@ -11,33 +11,33 @@ CREATE TABLE "project" (
 );
 
 CREATE TABLE "user_project" (
-  "user_id" serial,
-  "project_id" serial,
+  "user_id" integer,
+  "project_id" integer,
   PRIMARY KEY ("user_id", "project_id")
 );
 
 CREATE TABLE "risk_register" (
   "id" serial PRIMARY KEY,
-  "project_id" serial,
+  "project_id" integer,
   "name" text,
   "description" text
 );
 
 CREATE TABLE "risk" (
   "id" serial PRIMARY KEY,
-  "register_id" serial,
+  "register_id" integer,
   "date_raised" date,
   "name" text,
   "description" text,
   "status" text,
-  "impact_id" serial,
-  "probability_id" serial,
-  "severity_id" serial
+  "impact_id" integer,
+  "probability_id" integer,
+  "severity_id" integer
 );
 
 CREATE TABLE "response" (
   "id" serial PRIMARY KEY,
-  "risk_id" serial,
+  "risk_id" integer,
   "name" text,
   "description" text,
   "expected_result" text,
@@ -46,7 +46,7 @@ CREATE TABLE "response" (
 
 CREATE TABLE "risk_property" (
   "id" serial PRIMARY KEY,
-  "risk_id" serial,
+  "risk_id" integer,
   "name" text,
   "description" text,
   "quantiative_value" real
