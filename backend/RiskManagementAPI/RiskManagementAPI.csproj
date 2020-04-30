@@ -47,6 +47,11 @@
       <Content Include="Views\Project\Details.cshtml" />
       <Content Include="Views\Project\Edit.cshtml" />
       <Content Include="Views\Project\Index.cshtml" />
+      <Content Include="Views\Response\Create.cshtml" />
+      <Content Include="Views\Response\Delete.cshtml" />
+      <Content Include="Views\Response\Details.cshtml" />
+      <Content Include="Views\Response\Edit.cshtml" />
+      <Content Include="Views\Response\Index.cshtml" />
       <Content Include="Views\RiskProperty\Create.cshtml" />
       <Content Include="Views\RiskProperty\Delete.cshtml" />
       <Content Include="Views\RiskProperty\Details.cshtml" />

@@ -25,5 +25,7 @@ namespace RiskManagementAPI.Models
         public DbSet<RiskManagementAPI.Models.Project> Project { get; set; }
         
         public DbSet<RiskManagementAPI.Models.RiskProperty> RiskProperty { get; set; }
+        
+        public DbSet<RiskManagementAPI.Models.Response> Response { get; set; }
     }
 }
