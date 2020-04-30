@@ -21,5 +21,7 @@ namespace RiskManagementAPI.Models
         public DbSet<RiskManagementAPI.Models.UserProject> UserProject { get; set; }
         
         public DbSet<RiskManagementAPI.Models.User> User { get; set; }
+        
+        public DbSet<RiskManagementAPI.Models.Project> Project { get; set; }
     }
 }
