@@ -42,6 +42,11 @@
       <Content Include="Views\Probability\Details.cshtml" />
       <Content Include="Views\Probability\Edit.cshtml" />
       <Content Include="Views\Probability\Index.cshtml" />
+      <Content Include="Views\RiskRegister\Create.cshtml" />
+      <Content Include="Views\RiskRegister\Delete.cshtml" />
+      <Content Include="Views\RiskRegister\Details.cshtml" />
+      <Content Include="Views\RiskRegister\Edit.cshtml" />
+      <Content Include="Views\RiskRegister\Index.cshtml" />
       <Content Include="Views\Severity\Create.cshtml" />
       <Content Include="Views\Severity\Delete.cshtml" />
       <Content Include="Views\Severity\Details.cshtml" />

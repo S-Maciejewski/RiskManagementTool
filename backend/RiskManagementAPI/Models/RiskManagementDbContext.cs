@@ -15,5 +15,7 @@ namespace RiskManagementAPI.Models
         public DbSet<RiskManagementAPI.Models.Impact> Impact { get; set; }
         
         public DbSet<RiskManagementAPI.Models.Severity> Severity { get; set; }
+        
+        public DbSet<RiskManagementAPI.Models.RiskRegister> RiskRegister { get; set; }
     }
 }
