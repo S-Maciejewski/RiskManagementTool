@@ -59,6 +59,11 @@
       <Content Include="Views\UserProject\Details.cshtml" />
       <Content Include="Views\UserProject\Edit.cshtml" />
       <Content Include="Views\UserProject\Index.cshtml" />
+      <Content Include="Views\User\Create.cshtml" />
+      <Content Include="Views\User\Delete.cshtml" />
+      <Content Include="Views\User\Details.cshtml" />
+      <Content Include="Views\User\Edit.cshtml" />
+      <Content Include="Views\User\Index.cshtml" />
       <Content Include="Views\_ViewImports.cshtml" />
       <Content Include="Views\_ViewStart.cshtml" />
     </ItemGroup>
