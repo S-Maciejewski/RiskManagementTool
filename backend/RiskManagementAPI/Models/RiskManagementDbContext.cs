@@ -17,5 +17,7 @@ namespace RiskManagementAPI.Models
         public DbSet<RiskManagementAPI.Models.Severity> Severity { get; set; }
         
         public DbSet<RiskManagementAPI.Models.RiskRegister> RiskRegister { get; set; }
+        
+        public DbSet<RiskManagementAPI.Models.UserProject> UserProject { get; set; }
     }
 }

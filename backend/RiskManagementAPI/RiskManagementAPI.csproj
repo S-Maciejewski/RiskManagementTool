@@ -54,6 +54,11 @@
       <Content Include="Views\Severity\Index.cshtml" />
       <Content Include="Views\Shared\_CookieConsentPartial.cshtml" />
       <Content Include="Views\Shared\_Layout.cshtml" />
+      <Content Include="Views\UserProject\Create.cshtml" />
+      <Content Include="Views\UserProject\Delete.cshtml" />
+      <Content Include="Views\UserProject\Details.cshtml" />
+      <Content Include="Views\UserProject\Edit.cshtml" />
+      <Content Include="Views\UserProject\Index.cshtml" />
       <Content Include="Views\_ViewImports.cshtml" />
       <Content Include="Views\_ViewStart.cshtml" />
     </ItemGroup>
