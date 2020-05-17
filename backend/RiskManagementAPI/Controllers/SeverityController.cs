@@ -23,7 +23,7 @@ namespace RiskManagementAPI.Controllers
         // GET: Severity
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Severity.ToListAsync());
+            return Json(await _context.Severity.ToListAsync());
         }
 
         [HttpGet("details/{id}")]
@@ -42,14 +42,7 @@ namespace RiskManagementAPI.Controllers
                 return NotFound();
             }
 
-            return View(severity);
-        }
-
-        [HttpGet("create")]
-        // GET: Severity/Create
-        public IActionResult Create()
-        {
-            return View();
+            return Json(severity);
         }
 
         // POST: Severity/Create
@@ -65,7 +58,7 @@ namespace RiskManagementAPI.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(severity);
+            return Json(severity);
         }
 
         [HttpGet("edit/{id}")]
@@ -82,7 +75,7 @@ namespace RiskManagementAPI.Controllers
             {
                 return NotFound();
             }
-            return View(severity);
+            return Json(severity);
         }
 
         // POST: Severity/Edit/5
@@ -117,7 +110,7 @@ namespace RiskManagementAPI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(severity);
+            return Json(severity);
         }
 
         [HttpGet("delete/{id}")]
@@ -136,7 +129,7 @@ namespace RiskManagementAPI.Controllers
                 return NotFound();
             }
 
-            return View(severity);
+            return Json(severity);
         }
 
         // POST: Severity/Delete/5

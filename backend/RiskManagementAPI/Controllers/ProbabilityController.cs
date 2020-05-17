@@ -20,7 +20,7 @@ namespace RiskManagementAPI.Controllers
         // GET: Probability
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Probability.ToListAsync());
+            return Json(await _context.Probability.ToListAsync());
         }
 
         [HttpGet("details/{id}")]
@@ -39,14 +39,7 @@ namespace RiskManagementAPI.Controllers
                 return NotFound();
             }
 
-            return View(probability);
-        }
-
-        [HttpGet("create")]
-        // GET: Probability/Create
-        public IActionResult Create()
-        {
-            return View();
+            return Json(probability);
         }
 
         // POST: Probability/Create
@@ -63,7 +56,7 @@ namespace RiskManagementAPI.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(probability);
+            return Json(probability);
         }
 
         [HttpGet("edit/{id}")]
@@ -81,7 +74,7 @@ namespace RiskManagementAPI.Controllers
                 return NotFound();
             }
 
-            return View(probability);
+            return Json(probability);
         }
 
         // POST: Probability/Edit/5
@@ -118,7 +111,7 @@ namespace RiskManagementAPI.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(probability);
+            return Json(probability);
         }
 
         [HttpGet("delete/{id}")]
@@ -137,7 +130,7 @@ namespace RiskManagementAPI.Controllers
                 return NotFound();
             }
 
-            return View(probability);
+            return Json(probability);
         }
 
         // POST: Probability/Delete/5

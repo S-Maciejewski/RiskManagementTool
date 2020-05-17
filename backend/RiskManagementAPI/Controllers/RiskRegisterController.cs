@@ -23,7 +23,7 @@ namespace RiskManagementAPI.Controllers
         // GET: RiskRegister
         public async Task<IActionResult> Index()
         {
-            return View(await _context.RiskRegister.ToListAsync());
+            return Json(await _context.RiskRegister.ToListAsync());
         }
 
         [HttpGet("details/{id}")]
@@ -42,16 +42,9 @@ namespace RiskManagementAPI.Controllers
                 return NotFound();
             }
 
-            return View(riskRegister);
+            return Json(riskRegister);
         }
-
-        [HttpGet("create")]
-        // GET: RiskRegister/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
+        
         // POST: RiskRegister/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -65,7 +58,7 @@ namespace RiskManagementAPI.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(riskRegister);
+            return Json(riskRegister);
         }
 
         [HttpGet("edit/{id}")]
@@ -82,7 +75,7 @@ namespace RiskManagementAPI.Controllers
             {
                 return NotFound();
             }
-            return View(riskRegister);
+            return Json(riskRegister);
         }
 
         // POST: RiskRegister/Edit/5
@@ -117,7 +110,7 @@ namespace RiskManagementAPI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(riskRegister);
+            return Json(riskRegister);
         }
 
         [HttpGet("delete/{id}")]
@@ -136,7 +129,7 @@ namespace RiskManagementAPI.Controllers
                 return NotFound();
             }
 
-            return View(riskRegister);
+            return Json(riskRegister);
         }
 
         // POST: RiskRegister/Delete/5
