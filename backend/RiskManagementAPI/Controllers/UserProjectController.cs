@@ -46,11 +46,8 @@ namespace RiskManagementAPI.Controllers
         }
 
         // POST: UserProject/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost("create")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UserId,ProjectId")] UserProject userProject)
+        public async Task<IActionResult> Create([Bind("UserId,ProjectId")] [FromBody] UserProject userProject)
         {
             if (ModelState.IsValid)
             {
@@ -79,11 +76,8 @@ namespace RiskManagementAPI.Controllers
         }
 
         // POST: UserProject/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost("edit/{id}")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserId,ProjectId")] UserProject userProject)
+        public async Task<IActionResult> Edit(int id, [Bind("UserId,ProjectId")] [FromBody] UserProject userProject)
         {
             if (id != userProject.UserId)
             {
@@ -134,7 +128,6 @@ namespace RiskManagementAPI.Controllers
 
         // POST: UserProject/Delete/5
         [HttpPost("delete/{id}"), ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var userProject = await _context.UserProject.FindAsync(id);

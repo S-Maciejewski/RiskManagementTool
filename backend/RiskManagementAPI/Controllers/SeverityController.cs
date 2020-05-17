@@ -46,11 +46,8 @@ namespace RiskManagementAPI.Controllers
         }
 
         // POST: Severity/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost("create")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Value")] Severity severity)
+        public async Task<IActionResult> Create([Bind("Id,Name,Value")] [FromBody] Severity severity)
         {
             if (ModelState.IsValid)
             {
@@ -79,11 +76,8 @@ namespace RiskManagementAPI.Controllers
         }
 
         // POST: Severity/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost("edit/{id}")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Value")] Severity severity)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Value")] [FromBody] Severity severity)
         {
             if (id != severity.Id)
             {
@@ -134,7 +128,6 @@ namespace RiskManagementAPI.Controllers
 
         // POST: Severity/Delete/5
         [HttpPost("delete/{id}"), ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var severity = await _context.Severity.FindAsync(id);

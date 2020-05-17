@@ -43,11 +43,8 @@ namespace RiskManagementAPI.Controllers
         }
 
         // POST: Probability/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost("create")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Value")] Probability probability)
+        public async Task<IActionResult> Create([Bind("Id,Name,Value")] [FromBody] Probability probability)
         {
             if (ModelState.IsValid)
             {
@@ -78,11 +75,8 @@ namespace RiskManagementAPI.Controllers
         }
 
         // POST: Probability/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost("edit/{id}")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Value")] Probability probability)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Value")] [FromBody] Probability probability)
         {
             if (id != probability.Id)
             {
@@ -135,7 +129,6 @@ namespace RiskManagementAPI.Controllers
 
         // POST: Probability/Delete/5
         [HttpPost("delete/{id}"), ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var probability = await _context.Probability.FindAsync(id);
