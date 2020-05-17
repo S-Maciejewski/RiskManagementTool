@@ -14,7 +14,7 @@ namespace RiskManagementAPI
 
         public static void Main(string[] args)
         {
-            if (args.Length > 2 && args[0].Length > 0 && args[1].Length > 0)
+            if (args.Length >= 2 && args[0].Length > 0 && args[1].Length > 0)
             {
                 PrepareConnectionString(args);
             }
@@ -28,10 +28,11 @@ namespace RiskManagementAPI
 
         private static void PrepareConnectionString(string[] args)
         {
-            DatabaseServerPort = args[0];
-            DatabaseServerAddress = args[1];
+            DatabaseServerAddress = args[0];
+            DatabaseServerPort = args[1];
             DatabaseContextConnectionString = "Server=" + DatabaseServerAddress + ";Port=" + DatabaseServerPort +
                                                  ";User Id=postgres;Password=pwd;";
+            Console.WriteLine(DatabaseContextConnectionString);
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
