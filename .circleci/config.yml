@@ -5,12 +5,13 @@ orbs:
 
 jobs:
   build:
+    working_directory: /project
     docker:
       - image: mcr.microsoft.com/dotnet/core/sdk:3.1
     steps:
       - checkout
       - run: 
-        working_directory: backend
+        working_directory: ./backend
         command: dotnet build 
 
 
