@@ -4,20 +4,19 @@ orbs:
   welcome: circleci/welcome-orb@0.4.1
 
 jobs:
-  build-backed:
+  build:
     working_directory: ~/backend
     docker:
-      image: mcr.microsoft.com/dotnet/core/sdk:3.1
+      - image: mcr.microsoft.com/dotnet/core/sdk:3.1
     steps:
       - checkout
-      - run:
-        command: dotnet build
+      - run: dotnet build
 
 
 workflows:
-  build:
+  build_and_test:
     jobs:
-      - build-backend
+      - build
   welcome:
     jobs:
       - welcome/run
