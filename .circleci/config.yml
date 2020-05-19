@@ -10,8 +10,7 @@ jobs:
     steps:
       - checkout
       - run: 
-        working_directory: backend
-        command: dotnet build 
+        command: dotnet build backend/RiskManagementAPI.sln
 
 
 workflows:
