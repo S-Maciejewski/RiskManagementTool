@@ -10,9 +10,9 @@ jobs:
     steps:
       - checkout
       - run: 
-        name: Builind server
-        command: 'dotnet build'
-        working_directory: $CIRCLE_WORKING_DIRECTORY/backend
+          name: Builind server
+          command: 'dotnet build'
+          working_directory: $CIRCLE_WORKING_DIRECTORY/backend
 
 workflows:
   build_and_test:
