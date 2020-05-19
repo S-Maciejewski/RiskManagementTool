@@ -11,8 +11,8 @@ jobs:
       - checkout
       - run: 
           name: Builind server
-          command: 'pwd && dotnet build .'
-          working_directory: $CIRCLE_WORKING_DIRECTORY/backend
+          command: 'ls -l && pwd && dotnet build .'
+          working_directory: backend
 
 workflows:
   build_and_test:
