@@ -4,20 +4,30 @@ orbs:
   welcome: circleci/welcome-orb@0.4.1
 
 jobs:
-  build:
+  build-backend:
     docker:
       - image: mcr.microsoft.com/dotnet/core/sdk:3.1-alpine
     steps:
       - checkout
       - run: 
-          name: Builind server
-          command: 'dotnet build'
+          name: Building server
           working_directory: backend
-
+          command: 'dotnet build'
+  build-frontend: 
+    docker:
+      - image: node:13-alpine
+    steps:
+      - checkout
+      - run: 
+          name: Building frontend
+          working_directory: frontend/riskManagementTool
+          command: "npm install && npm run build"
+          
 workflows:
   build_and_test:
     jobs:
-      - build
+      - build-backend
+      - build-frontend
   welcome:
     jobs:
       - welcome/run
