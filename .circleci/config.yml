@@ -11,7 +11,7 @@ jobs:
       - checkout
       - run: 
           name: Builind server
-          command: 'ls -l && pwd && dotnet build .'
+          command: 'dotnet build'
           working_directory: backend
 
 workflows:
