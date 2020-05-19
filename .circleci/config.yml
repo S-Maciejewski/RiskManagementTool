@@ -10,8 +10,7 @@ jobs:
       - image: mcr.microsoft.com/dotnet/core/sdk:3.1
     steps:
       - checkout
-      - run: 
-        command: dotnet build backend/RiskManagementAPI.sln
+      - run: dotnet build backend/RiskManagementAPI.sln
 
 
 workflows:
