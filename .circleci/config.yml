@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  welcome: circleci/welcome-orb@0.4.1
-
 jobs:
   build-backend:
     docker:
@@ -24,10 +21,9 @@ jobs:
           command: "npm install && npm run build"
           
 workflows:
-  build_and_test:
+  build_and_test_backend:
     jobs:
       - build-backend
-      - build-frontend
-  welcome:
+  build_frontend:
     jobs:
-      - welcome/run
+      - build-frontend
