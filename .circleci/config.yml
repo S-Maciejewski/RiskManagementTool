@@ -5,12 +5,14 @@ orbs:
 
 jobs:
   build:
-    working_directory: /project
     docker:
-      - image: mcr.microsoft.com/dotnet/core/sdk:3.1
+      - image: mcr.microsoft.com/dotnet/core/sdk:3.1-alpine
     steps:
       - checkout
-      - run: dotnet build backend/RiskManagementAPI.sln
+      - run: 
+        name: Builind server
+        command: dotnet build
+        working_directory: $CIRCLE_WORKING_DIRECTORY/backend
 
 
 workflows:
