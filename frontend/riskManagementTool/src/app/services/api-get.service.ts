@@ -23,6 +23,9 @@ export class ApiGetService {
 
   constructor(public http: HttpClient) { }
 
+  getMock(url: string) {
+    return this.http.get(url, httpOptions);
+  }
 
   // TODO: Test api response when .Net API is properly set up
   testApiResponse() {
