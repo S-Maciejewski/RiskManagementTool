@@ -37,4 +37,15 @@ export class ProjectsService {
     });
     return promise;
   }
+
+  createProject(name: string, description: string) {
+    var project = {
+      name: name,
+      description: description
+    }
+    this.apiGetService.apiPost("projects/create", project).subscribe( res => {
+      console.log("after post");
+    });
+  }
+
 }

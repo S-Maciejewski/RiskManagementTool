@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <div fxShow="true" fxHide.lt-md="true" style="width: 100%;">
+  <div fxShow="true" fxHide.lt-md="true" class="full-width">
     RiskManagementTool
     <a href="/projects" mat-button *ngIf="authenticationService.authenticated()">Projects</a>
     <button mat-button (click)="authenticationService.logout()" *ngIf="authenticationService.authenticated()" class="log-out">Log out</button>
