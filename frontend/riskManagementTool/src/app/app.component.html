@@ -1,3 +1,9 @@
-<mat-toolbar>Nav toolbar placeholder</mat-toolbar>
+<mat-toolbar>
+  <div fxShow="true" fxHide.lt-md="true" class="full-width">
+    RiskManagementTool
+    <a href="/projects" mat-button *ngIf="authenticationService.authenticated()">Projects</a>
+    <button mat-button (click)="authenticationService.logout()" *ngIf="authenticationService.authenticated()" class="log-out">Log out</button>
+  </div>
+</mat-toolbar>
 
 <router-outlet></router-outlet>
