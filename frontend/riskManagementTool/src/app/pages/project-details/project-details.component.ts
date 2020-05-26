@@ -19,25 +19,18 @@ export class ProjectDetailsComponent implements OnInit {
   public project: Project;
 
   ngOnInit(): void {
-    this.project = new Project();
-    this.getProjectId();
     this.getProject();    
   }
 
-  getProjectId() {
-    this.route.paramMap.subscribe(params => {
-      this.project.id = +params.get('id');
-    });
-  }
-
   getProject() {
-    this.projectsService.getProjectDetails(this.project.id).then(
-      result => {
-        this.project.name = result.name;
-        this.project.description = result.description;
-        this.project.riskRegisters = result.riskRegisters;
-      }
-    );
+    this.route.paramMap.subscribe(params => {
+      var id = +params.get('id');
+      this.projectsService.getProjectDetails(id).then(
+        result => {
+            this.project = new Project(id, result.name, result.description, result.riskRegisters);
+        }
+      );
+    });
   }
 
   delete(id: number) {
