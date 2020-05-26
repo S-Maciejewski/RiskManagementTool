@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from "../../services/projects.service";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Project } from 'src/app/model/project';
 
 @Component({
@@ -12,7 +12,8 @@ export class ProjectDetailsComponent implements OnInit {
 
   constructor(
     private projectsService: ProjectsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   public project: Project;
@@ -37,6 +38,11 @@ export class ProjectDetailsComponent implements OnInit {
         this.project.riskRegisters = result.riskRegisters;
       }
     );
+  }
+
+  delete(id: number) {
+    this.projectsService.deleteProject(this.project.id);
+    this.router.navigate(['/projects']);
   }
 
 }

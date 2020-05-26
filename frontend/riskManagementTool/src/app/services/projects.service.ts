@@ -74,7 +74,7 @@ export class ProjectsService {
       name: name,
       description: description
     }
-    this.apiGetService.apiPost("projects/create", project).subscribe( res => {
+    this.apiGetService.apiPost("project/create", project).subscribe( res => {
       console.log("after createProject");
     });
   }
@@ -88,6 +88,12 @@ export class ProjectsService {
     var endpoint = 'Project/Edit/' + id;
     this.apiGetService.apiPost(endpoint, projectDetails).subscribe( res => {
       console.log("after updateProject");
+    });
+  }
+
+  deleteProject(id: number) {
+    this.apiGetService.apiPost("project/delete/" + id, {}).subscribe( res => {
+      console.log("after deleteProject");
     });
   }
 
