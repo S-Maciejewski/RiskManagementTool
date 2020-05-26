@@ -15,9 +15,7 @@ export class ProjectsService {
 
   public currentProject: Project;
 
-  constructor(private apiGetService: ApiGetService, private riskRegistersService: RiskRegistersService) { 
-    this.currentProject = new Project();
-  }
+  constructor(private apiGetService: ApiGetService, private riskRegistersService: RiskRegistersService) { }
 
   getProjects() {
     let promise = new Promise((resolve, reject) => {
@@ -44,11 +42,9 @@ export class ProjectsService {
       //get details
       this.apiGetService.get(url).subscribe( res => {
         var project = JSON.parse(JSON.stringify(res));
-        this.currentProject.id = project.id;
-        this.currentProject.name = project.name;
-        this.currentProject.description = project.description;
+        this.currentProject = new Project(project.id, project.name, project.description, null);
         //get risk registers
-        this.riskRegistersService.getRiskRegisters(project.id).then( result => {
+        this.riskRegistersService.getRegisters(project.id).then( result => {
           this.currentProject.riskRegisters = result;
           resolve(this.currentProject);
         });
@@ -58,7 +54,7 @@ export class ProjectsService {
   }
 
   getEditDetails(id: number): Project {
-    if(this.currentProject.id != null && this.currentProject.id === id ) { //make sure currentProject is requested project
+    if(this.currentProject != null && this.currentProject.id === id ) { //make sure currentProject is requested project
       return this.currentProject;
     } else { //fetch data for requested project
       this.getProjectDetails(id).then(
