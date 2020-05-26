@@ -27,10 +27,8 @@ export class RegisterDetailsComponent implements OnInit {
   getRegister() {
     this.route.paramMap.subscribe(params => {
       var id = +params.get('id');
-      console.log("id = " + id);
       this.riskRegistersService.getRegisterDetails(id).then(
         result => {
-          console.log(result);
             this.riskRegister = new RiskRegister(id, result.projectId, result.name, result.description);
         }
       );
