@@ -14,15 +14,13 @@ export class ProjectDetailsComponent implements OnInit {
     private projectsService: ProjectsService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {
+    this.project = new Project();
+  }
 
   public project: Project;
 
   ngOnInit(): void {
-    this.getProject();    
-  }
-
-  getProject() {
     this.route.paramMap.subscribe(params => {
       var id = +params.get('id');
       this.projectsService.getProjectDetails(id).then(
@@ -30,7 +28,7 @@ export class ProjectDetailsComponent implements OnInit {
             this.project = new Project(id, result.name, result.description, result.riskRegisters);
         }
       );
-    });
+    });   
   }
 
   delete(id: number) {
