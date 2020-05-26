@@ -7,6 +7,10 @@ import { ApiGetService } from "./api-get.service";
 
 export class ProjectsService {
 
+
+  //TODO
+  //change all mock url's with backend endpoints
+
   constructor(private apiGetService: ApiGetService) { }
 
   getProjects() {
@@ -23,13 +27,13 @@ export class ProjectsService {
     let promise = new Promise((resolve, reject) => {
       var url = '';
       if(projectId === 0)
-        url = 'http://www.mocky.io/v2/5ec46b293000000c6d39c878';
+        url = 'http://www.mocky.io/v2/5ecd54f23200004f002368d5';
       else if(projectId === 1)
         url = 'http://www.mocky.io/v2/5ec46c09300000df0639c87e';
       else if(projectId === 2)
         url = 'http://www.mocky.io/v2/5ec46c1f300000f33d39c87f';
       else
-        url = 'http://www.mocky.io/v2/5ec46c4d300000692339c880';
+        url = 'http://www.mocky.io/v2/5ecd63f43000006900ea0abe';
 
       //get details
       this.apiGetService.getMock(url).subscribe( res => {
@@ -50,7 +54,19 @@ export class ProjectsService {
       description: description
     }
     this.apiGetService.apiPost("projects/create", project).subscribe( res => {
-      console.log("after post");
+      console.log("after createProject");
+    });
+  }
+
+  updateProject(projectId: number, name: string, description: string) {
+    var projectDetails = {
+      id: projectId,
+      name: name,
+      description: description
+    }
+    var endpoint = 'Project/Edit/' + projectId;
+    this.apiGetService.apiPost(endpoint, projectDetails).subscribe( res => {
+      console.log("after updateProject");
     });
   }
 
