@@ -41,7 +41,7 @@ export class ProjectDetailsComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.projectsService.deleteProject(this.project.id);
+    this.projectsService.deleteProject(id);
     this.router.navigate(['/projects']);
   }
 

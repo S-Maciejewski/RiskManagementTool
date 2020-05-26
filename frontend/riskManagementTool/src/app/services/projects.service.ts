@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiGetService } from "./api-get.service";
 import { Project } from '../model/project';
+import { RiskRegistersService } from './risk-registers.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +15,13 @@ export class ProjectsService {
 
   public currentProject: Project;
 
-  constructor(private apiGetService: ApiGetService) { 
+  constructor(private apiGetService: ApiGetService, private riskRegistersService: RiskRegistersService) { 
     this.currentProject = new Project();
   }
 
   getProjects() {
     let promise = new Promise((resolve, reject) => {
-      this.apiGetService.getMock('http://www.mocky.io/v2/5ec46d43300000f33d39c883').subscribe( res => {
+      this.apiGetService.get('http://www.mocky.io/v2/5ec46d43300000f33d39c883').subscribe( res => {
         var projects = JSON.parse(JSON.stringify(res));
         resolve(projects);
       });
@@ -41,14 +42,14 @@ export class ProjectsService {
         url = 'http://www.mocky.io/v2/5ecd63f43000006900ea0abe';
 
       //get details
-      this.apiGetService.getMock(url).subscribe( res => {
+      this.apiGetService.get(url).subscribe( res => {
         var project = JSON.parse(JSON.stringify(res));
         this.currentProject.id = project.id;
         this.currentProject.name = project.name;
         this.currentProject.description = project.description;
         //get risk registers
-        this.apiGetService.getMock('http://www.mocky.io/v2/5ec5487d2f000007e5dc313c').subscribe( res => {
-          this.currentProject.riskRegisters =res;
+        this.riskRegistersService.getRiskRegisters(project.id).then( result => {
+          this.currentProject.riskRegisters = result;
           resolve(this.currentProject);
         });
       });
