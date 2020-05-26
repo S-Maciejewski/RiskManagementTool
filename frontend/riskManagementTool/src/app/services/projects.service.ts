@@ -42,7 +42,7 @@ export class ProjectsService {
       //get details
       this.apiGetService.get(url).subscribe( res => {
         var project = JSON.parse(JSON.stringify(res));
-        this.currentProject = new Project(project.id, project.name, project.description, null);
+        this.currentProject = new Project(project.id, project.name, project.description);
         //get risk registers
         this.riskRegistersService.getRegisters(project.id).then( result => {
           this.currentProject.riskRegisters = result;

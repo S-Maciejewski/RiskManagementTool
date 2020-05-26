@@ -7,6 +7,8 @@ import { CreateProjectComponent } from "./pages/create-project/create-project.co
 import { ProjectDetailsComponent } from "./pages/project-details/project-details.component";
 import { ProjectEditComponent } from "./pages/project-edit/project-edit.component";
 import { RegisterDetailsComponent } from "./pages/register-details/register-details.component";
+import { RegisterEditComponent } from './pages/register-edit/register-edit.component';
+import { CreateRegisterComponent } from './pages/create-register/create-register.component';
 
 
 const routes: Routes = [
@@ -17,7 +19,9 @@ const routes: Routes = [
   { path: 'projects/create', component: CreateProjectComponent },
   { path: 'projects/details/:id', component: ProjectDetailsComponent },
   { path: 'projects/edit/:id', component: ProjectEditComponent },
-  { path: 'registers/:registerId', component: RegisterDetailsComponent }
+  { path: 'registers/create', component: CreateRegisterComponent },
+  { path: 'registers/details/:id', component: RegisterDetailsComponent },
+  { path: 'registers/edit/:id', component: RegisterEditComponent }
 ];
 
 @NgModule({
