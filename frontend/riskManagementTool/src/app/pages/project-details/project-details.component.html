@@ -14,13 +14,13 @@
       </div>
     </mat-card-content>
   </mat-card>
-  <mat-card class="half-width register-list">
+  <mat-card class="half-width chip-list">
     <mat-card-header class="center">
       <mat-card-title>Risk registers:</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <mat-chip-list class="mat-chip-list-stacked list" *ngFor="let register of project.riskRegisters" >
-        <mat-chip [routerLink]="['/registers/', register.id]" class="chip-height center">
+        <mat-chip [routerLink]="['/registers/details/', register.id]" class="chip-height center">
           <div>
             <h3 matLine>{{register.name}} (id: {{register.id}}) </h3>
             <p matLine>{{register.description}}</p>
