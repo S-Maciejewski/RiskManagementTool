@@ -30,9 +30,15 @@ export class ProjectsService {
         url = 'http://www.mocky.io/v2/5ec46c1f300000f33d39c87f';
       else
         url = 'http://www.mocky.io/v2/5ec46c4d300000692339c880';
+
+      //get details
       this.apiGetService.getMock(url).subscribe( res => {
         var project = JSON.parse(JSON.stringify(res));
-        resolve(project);
+        //get risk registers
+        this.apiGetService.getMock('http://www.mocky.io/v2/5ec5487d2f000007e5dc313c').subscribe( res => {
+          project.riskRegisters = res;
+          resolve(project);
+        });
       });
     });
     return promise;

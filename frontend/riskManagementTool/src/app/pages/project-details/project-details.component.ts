@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-project-details',
   templateUrl: './project-details.component.html',
-  styleUrls: ['./project-details.component.css']
+  styleUrls: ['./project-details.component.scss']
 })
 export class ProjectDetailsComponent implements OnInit {
 
@@ -14,9 +14,10 @@ export class ProjectDetailsComponent implements OnInit {
     private route: ActivatedRoute,
   ) { }
 
-  public id: number;
+  public projectId: number;
   public name: string;
   public description: string;
+  public riskRegisters: object;
 
   ngOnInit(): void {
     this.getProjectId();
@@ -25,16 +26,17 @@ export class ProjectDetailsComponent implements OnInit {
 
   getProjectId() {
     this.route.paramMap.subscribe(params => {
-      this.id = +params.get('projectId');
+      this.projectId = +params.get('projectId');
     });
   }
 
   getProject() {
-    this.projectsService.getProjectDetails(this.id).then(
+    this.projectsService.getProjectDetails(this.projectId).then(
       result => {
         var project = result;
         this.name = project.name;
         this.description = project.description;
+        this.riskRegisters = project.riskRegisters;
       }
     );
   }

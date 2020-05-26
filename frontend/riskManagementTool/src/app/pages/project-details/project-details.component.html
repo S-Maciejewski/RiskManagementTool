@@ -1,6 +1,29 @@
-<p>project-details works!</p>
-<p>ID: {{id}}</p>
-<p>Name: {{name}}</p>
-<p>Description: {{description}}</p>
-<p>Risk registers list:</p>
-<p>TODO</p>
+<div class="center">
+  <mat-card class="half-width">
+    <mat-card-header class="center">
+      <mat-card-title>{{name}}</mat-card-title>
+      <button mat-raised-button color="primary" [routerLink]="['/projects/edit', projectId]">Edit</button>
+    </mat-card-header>
+    <mat-card-content>
+      <p>ID: {{projectId}}</p>
+      <div class="container">
+        <p><b>Description: </b>{{description}}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="half-width register-list">
+    <mat-card-header class="center">
+      <mat-card-title>Risk registers:</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-chip-list class="mat-chip-list-stacked list" *ngFor="let register of riskRegisters" >
+        <mat-chip [routerLink]="['/registers/', register.id]" class="chip-height center">
+          <div>
+            <h3 matLine>{{register.name}} (id: {{register.id}}) </h3>
+            <p matLine>{{register.description}}</p>
+          </div>
+        </mat-chip>
+      </mat-chip-list>
+    </mat-card-content>
+  </mat-card>
+</div>
