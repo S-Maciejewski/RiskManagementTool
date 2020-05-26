@@ -15,8 +15,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'projects/create', component: CreateProjectComponent },
-  { path: 'projects/details/:projectId', component: ProjectDetailsComponent },
-  { path: 'projects/edit/:projectId', component: ProjectEditComponent },
+  { path: 'projects/details/:id', component: ProjectDetailsComponent },
+  { path: 'projects/edit/:id', component: ProjectEditComponent },
   { path: 'registers/:registerId', component: RegisterDetailsComponent }
 ];
 

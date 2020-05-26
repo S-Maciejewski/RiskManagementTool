@@ -26,22 +26,17 @@ export class ProjectEditComponent implements OnInit {
 
   getProjectId() {
     this.route.paramMap.subscribe(params => {
-      this.project.projectId = +params.get('projectId');
+      this.project.id = +params.get('id');
     });
   }
 
   getProject() {
-    this.projectsService.getProjectDetails(this.project.projectId).then(
-      result => {
-        this.project.name = result.name;
-        this.project.description = result.description;
-      }
-    );
+    this.project = this.projectsService.getEditDetails(this.project.id);
   }
 
   public save(): void {
-    this.projectsService.updateProject(this.project.projectId, this.project.name, this.project.description);
-    this.router.navigate(['/projects/details/' + this.project.projectId]);
+    this.projectsService.updateProject(this.project.id, this.project.name, this.project.description);
+    this.router.navigate(['/projects/details/' + this.project.id]);
   }
 
 }

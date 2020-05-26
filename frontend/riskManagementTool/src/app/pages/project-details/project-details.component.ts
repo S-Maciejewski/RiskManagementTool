@@ -25,12 +25,12 @@ export class ProjectDetailsComponent implements OnInit {
 
   getProjectId() {
     this.route.paramMap.subscribe(params => {
-      this.project.projectId = +params.get('projectId');
+      this.project.id = +params.get('id');
     });
   }
 
   getProject() {
-    this.projectsService.getProjectDetails(this.project.projectId).then(
+    this.projectsService.getProjectDetails(this.project.id).then(
       result => {
         this.project.name = result.name;
         this.project.description = result.description;

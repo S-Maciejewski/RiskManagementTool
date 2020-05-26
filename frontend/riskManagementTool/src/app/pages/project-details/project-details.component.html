@@ -2,10 +2,10 @@
   <mat-card class="half-width">
     <mat-card-header class="center">
       <mat-card-title>{{project.name}}</mat-card-title>
-      <button mat-raised-button color="primary" [routerLink]="['/projects/edit', project.projectId]">Edit</button>
+      <button mat-raised-button color="primary" [routerLink]="['/projects/edit', project.id]">Edit</button>
     </mat-card-header>
     <mat-card-content>
-      <p>ID: {{project.projectId}}</p>
+      <p>ID: {{project.id}}</p>
       <div class="container">
         <p><b>Description: </b>{{project.description}}</p>
       </div>
