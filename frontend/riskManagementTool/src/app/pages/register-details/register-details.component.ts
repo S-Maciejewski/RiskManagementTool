@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { RiskRegistersService } from 'src/app/services/risk-registers.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RiskRegister } from 'src/app/model/riskRegister';
 
 @Component({
   selector: 'app-register-details',
@@ -7,9 +10,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterDetailsComponent implements OnInit {
 
-  constructor() { }
+  public riskRegister: RiskRegister;
+
+  constructor(
+    private riskRegistersService: RiskRegistersService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.riskRegister = new RiskRegister();
+  }
 
   ngOnInit(): void {
+    this.getRegister();    
+  }
+
+  getRegister() {
+    this.route.paramMap.subscribe(params => {
+      var id = +params.get('id');
+      console.log("id = " + id);
+      this.riskRegistersService.getRegisterDetails(id).then(
+        result => {
+          console.log(result);
+            this.riskRegister = new RiskRegister(id, result.projectId, result.name, result.description);
+        }
+      );
+    });
+  }
+
+  delete(id: number) {
+    this.riskRegistersService.deleteRegister(id);
+    this.router.navigate(['/projects/details/' + this.riskRegister.projectId]);
   }
 
 }
