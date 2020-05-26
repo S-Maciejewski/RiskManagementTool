@@ -1,13 +1,13 @@
 <div class="center">
   <mat-card class="half-width">
     <mat-card-header class="center">
-      <mat-card-title>{{name}}</mat-card-title>
-      <button mat-raised-button color="primary" [routerLink]="['/projects/edit', projectId]">Edit</button>
+      <mat-card-title>{{project.name}}</mat-card-title>
+      <button mat-raised-button color="primary" [routerLink]="['/projects/edit', project.projectId]">Edit</button>
     </mat-card-header>
     <mat-card-content>
-      <p>ID: {{projectId}}</p>
+      <p>ID: {{project.projectId}}</p>
       <div class="container">
-        <p><b>Description: </b>{{description}}</p>
+        <p><b>Description: </b>{{project.description}}</p>
       </div>
     </mat-card-content>
   </mat-card>
@@ -16,7 +16,7 @@
       <mat-card-title>Risk registers:</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <mat-chip-list class="mat-chip-list-stacked list" *ngFor="let register of riskRegisters" >
+      <mat-chip-list class="mat-chip-list-stacked list" *ngFor="let register of project.riskRegisters" >
         <mat-chip [routerLink]="['/registers/', register.id]" class="chip-height center">
           <div>
             <h3 matLine>{{register.name}} (id: {{register.id}}) </h3>

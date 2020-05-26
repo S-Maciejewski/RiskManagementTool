@@ -35,7 +35,7 @@ export class ApiGetService {
 
   //todo check, adjust, make it work...
   apiPost(endpoint: string, body: any) {
-    console.log("posting...")
+    console.log("posting to: " + this.apiAddress + endpoint)
     return this.http.post<any>(this.apiAddress + endpoint, body, httpOptions);
   }
 }

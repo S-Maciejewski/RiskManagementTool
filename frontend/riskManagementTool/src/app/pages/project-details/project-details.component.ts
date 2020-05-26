@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from "../../services/projects.service";
 import { ActivatedRoute } from '@angular/router';
+import { Project } from 'src/app/model/project';
 
 @Component({
   selector: 'app-project-details',
@@ -11,32 +12,29 @@ export class ProjectDetailsComponent implements OnInit {
 
   constructor(
     private projectsService: ProjectsService,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
   ) { }
 
-  public projectId: number;
-  public name: string;
-  public description: string;
-  public riskRegisters: object;
+  public project: Project;
 
   ngOnInit(): void {
+    this.project = new Project();
     this.getProjectId();
     this.getProject();    
   }
 
   getProjectId() {
     this.route.paramMap.subscribe(params => {
-      this.projectId = +params.get('projectId');
+      this.project.projectId = +params.get('projectId');
     });
   }
 
   getProject() {
-    this.projectsService.getProjectDetails(this.projectId).then(
+    this.projectsService.getProjectDetails(this.project.projectId).then(
       result => {
-        var project = result;
-        this.name = project.name;
-        this.description = project.description;
-        this.riskRegisters = project.riskRegisters;
+        this.project.name = result.name;
+        this.project.description = result.description;
+        this.project.riskRegisters = result.riskRegisters;
       }
     );
   }
