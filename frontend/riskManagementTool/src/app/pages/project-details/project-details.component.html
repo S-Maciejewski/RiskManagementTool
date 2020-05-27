@@ -3,8 +3,8 @@
     <mat-card-header class="center">
       <mat-card-title>
         {{project.name}}
-        <mat-icon class="deleteICon" [routerLink]="['/projects/edit', project.id]">edit</mat-icon> 
-        <mat-icon class="deleteICon" (click)="delete(project.id)">delete</mat-icon> 
+        <mat-icon class="crudIcon" [routerLink]="['/projects/edit', project.id]">edit</mat-icon> 
+        <mat-icon class="crudIcon" (click)="delete(project.id)">delete</mat-icon> 
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
