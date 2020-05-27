@@ -3,7 +3,7 @@
     <mat-card-header class="center">
       <mat-card-title>
         {{riskRegister.name}}
-        <mat-icon class="crudIcon" [routerLink]="['/registers/edit', riskRegister.projectId]">edit</mat-icon> 
+        <mat-icon class="crudIcon" [routerLink]="['/registers/edit', riskRegister.id]">edit</mat-icon> 
         <mat-icon class="crudIcon" (click)="delete(riskRegister.id)">delete</mat-icon> 
       </mat-card-title>
     </mat-card-header>
