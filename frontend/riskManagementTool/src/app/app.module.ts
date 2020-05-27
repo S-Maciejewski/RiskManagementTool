@@ -16,6 +16,7 @@ import { ProjectEditComponent } from './pages/project-edit/project-edit.componen
 import { RegisterDetailsComponent } from './pages/register-details/register-details.component';
 import { RegisterEditComponent } from './pages/register-edit/register-edit.component';
 import { CreateRegisterComponent } from './pages/create-register/create-register.component';
+import { RiskDetailsComponent } from './pages/risk-details/risk-details.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CreateRegisterComponent } from './pages/create-register/create-register
     ProjectEditComponent,
     RegisterDetailsComponent,
     RegisterEditComponent,
-    CreateRegisterComponent
+    CreateRegisterComponent,
+    RiskDetailsComponent
   ],
   imports: [
     BrowserModule,
