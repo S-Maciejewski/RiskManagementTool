@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
 const httpHeaders = new HttpHeaders({
-    'Content-Type': 'application/json',
-  });
+  'Content-Type': 'application/json',
+});
 
 const rawHttpOptions = {
   headers: httpHeaders,
@@ -26,8 +26,9 @@ export class ApiGetService {
   constructor(public http: HttpClient) { }
 
   //todo remove after proper backend API is used
-  get(url: string) {
-    return this.http.get(url, rawHttpOptions);
+  get(endpoint: string) {
+    // return this.http.get(this.apiAddress + endpoint, this.httpOptions);
+    return this.http.get(endpoint, this.httpOptions);
   }
 
   getWithParams(url: string, params: HttpParams) {
