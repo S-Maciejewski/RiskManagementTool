@@ -21,15 +21,12 @@ export class RegisterDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getRegister();    
-  }
-
-  getRegister() {
     this.route.paramMap.subscribe(params => {
       var id = +params.get('id');
       this.riskRegistersService.getRegisterDetails(id).then(
         result => {
-            this.riskRegister = new RiskRegister(id, result.projectId, result.name, result.description);
+            this.riskRegister = new RiskRegister(id, result.projectId, result.name, result.description, result.risks);
+          console.log(this.riskRegister);  
         }
       );
     });

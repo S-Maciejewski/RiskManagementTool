@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiGetService } from "./api-get.service";
 import { HttpParams } from '@angular/common/http';
 import { RiskRegister } from '../model/riskRegister';
+import { RisksService } from './risks.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class RiskRegistersService {
 
   public currentRegister: RiskRegister;
 
-  constructor(private apiGetService: ApiGetService) { }
+  constructor(private apiGetService: ApiGetService, private risksService: RisksService) { }
 
   getRegisters(projectId: number): any {
     let promise = new Promise((resolve, reject) => {
@@ -43,12 +44,11 @@ export class RiskRegistersService {
       this.apiGetService.get(url).subscribe( res => {
         var register = JSON.parse(JSON.stringify(res));
         this.currentRegister = new RiskRegister(register.id, register.projectId, register.name, register.description);
-        //get risks
-        // this.risksService.getRisks(register.id).then( result => {
-        //   this.currentRegister.risks = result;
-        //   resolve(this.currentRegister);
-        // });
-        resolve(this.currentRegister);
+        // get risks
+        this.risksService.getRisks(register.id).then( result => {
+          this.currentRegister.risks = result;
+          resolve(this.currentRegister);
+        });
       });
     });
     return promise;
