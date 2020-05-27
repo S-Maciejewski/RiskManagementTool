@@ -24,3 +24,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .half-width {
   width: 50%;
 }
+
+.crudIcon {
+  cursor: pointer;
+}
+
+.chip-list {
+  margin-top: 5px;
+}
+
+.chip-height {
+  height: auto !important;
+  margin-top: 10px !important;
+}

@@ -12,6 +12,11 @@ import { ProjectsComponent } from './pages/projects/projects.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateProjectComponent } from './pages/create-project/create-project.component';
 import { ProjectDetailsComponent } from './pages/project-details/project-details.component';
+import { ProjectEditComponent } from './pages/project-edit/project-edit.component';
+import { RegisterDetailsComponent } from './pages/register-details/register-details.component';
+import { RegisterEditComponent } from './pages/register-edit/register-edit.component';
+import { CreateRegisterComponent } from './pages/create-register/create-register.component';
+import { RiskDetailsComponent } from './pages/risk-details/risk-details.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +25,12 @@ import { ProjectDetailsComponent } from './pages/project-details/project-details
     MainViewComponent,
     ProjectsComponent,
     CreateProjectComponent,
-    ProjectDetailsComponent
+    ProjectDetailsComponent,
+    ProjectEditComponent,
+    RegisterDetailsComponent,
+    RegisterEditComponent,
+    CreateRegisterComponent,
+    RiskDetailsComponent
   ],
   imports: [
     BrowserModule,
