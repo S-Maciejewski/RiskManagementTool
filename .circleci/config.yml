@@ -45,7 +45,7 @@ workflows:
     jobs:
       - build-and-seed-database-image
       - build-frontend
-      - build-and-test-backend 
+      - build-and-test-backend:
           requires:
             - build-and-seed-database-image
       
