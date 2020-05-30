@@ -43,9 +43,9 @@ workflows:
   version: 2
   build-and-test:
     jobs:
-      - build-and-seed-database-image
+      - build-and-seed-database
       - build-frontend
       - build-and-test-backend:
           requires:
-            - build-and-seed-database-image
+            - build-and-seed-database
       
