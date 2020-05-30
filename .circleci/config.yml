@@ -27,7 +27,7 @@ jobs:
           command: 'dotnet build'
       - run:
           name: Run server
-          working_directory: backend
+          working_directory: backend/RiskManagementAPI/
           command: 'dotnet run localhost 5432'
   build-frontend: 
     docker:
