@@ -46,6 +46,6 @@ workflows:
       - build-and-seed-database-image
       - build-frontend
       - build-and-test-backend 
-          requires: 
+          requires:
             - build-and-seed-database-image
       
