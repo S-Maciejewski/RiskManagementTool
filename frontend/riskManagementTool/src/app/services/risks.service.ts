@@ -16,7 +16,6 @@ export class RisksService {
   getRisks(registerId: number): any {
     let promise = new Promise((resolve, reject) => {
       var params = new HttpParams().set("registerId", registerId + ''); //registerId conversion to string needed
-      //TODO use getWithParams instead of getMockWithParams
       this.apiGetService.getWithParams(api.risk, params).subscribe(result => {
         resolve(result);
       });
