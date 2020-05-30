@@ -17,6 +17,7 @@ import { RegisterDetailsComponent } from './pages/register-details/register-deta
 import { RegisterEditComponent } from './pages/register-edit/register-edit.component';
 import { CreateRegisterComponent } from './pages/create-register/create-register.component';
 import { RiskDetailsComponent } from './pages/risk-details/risk-details.component';
+import { RiskListEntryComponent } from './components/risk-list-entry/risk-list-entry.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { RiskDetailsComponent } from './pages/risk-details/risk-details.componen
     RegisterDetailsComponent,
     RegisterEditComponent,
     CreateRegisterComponent,
-    RiskDetailsComponent
+    RiskDetailsComponent,
+    RiskListEntryComponent
   ],
   imports: [
     BrowserModule,
