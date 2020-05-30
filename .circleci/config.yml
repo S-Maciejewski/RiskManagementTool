@@ -23,7 +23,7 @@ jobs:
       - checkout
       - run: 
           name: Building server
-          working_directory: backend
+          working_directory: backend/RiskManagementAPI/
           command: 'dotnet build'
       - run:
           name: Run server
