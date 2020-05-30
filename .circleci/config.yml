@@ -15,7 +15,7 @@ jobs:
       - run:
           name: Push to Docker Hub
           command: docker push $DOCKER_USER/risk-management-tool-db:latest
-  test-backend:
+  build-and-test-backend:
     docker:
       - image: mcr.microsoft.com/dotnet/core/sdk:3.1-alpine
       - image: jantechner/risk-management-tool-db:latest
