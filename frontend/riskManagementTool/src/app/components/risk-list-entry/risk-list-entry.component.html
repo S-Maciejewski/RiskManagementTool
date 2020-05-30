@@ -1,0 +1,23 @@
+<mat-card>
+    <mat-card-title>{{risk.name}}</mat-card-title>
+    <mat-card-subtitle>{{risk.dateRaised.toLocaleDateString()}}</mat-card-subtitle>
+    <mat-card-content>
+        <p>{{risk.description}}</p>
+        <div class="details">
+            <div>
+                Impact: {{impact}}
+            </div>
+            <div>
+                Probability: {{probability}}
+            </div>
+            <div>
+                Severity: {{severity}}
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <a mat-button [routerLink]="['/risks/details', risk.id]">Edit</a>
+        <a mat-button [routerLink]="['/risks/details', risk.id]">Responses</a>
+    </mat-card-actions>
+
+</mat-card>

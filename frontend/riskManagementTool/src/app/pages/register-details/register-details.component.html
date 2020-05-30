@@ -1,0 +1,38 @@
+<div class="center">
+  <mat-card class="half-width">
+    <mat-card-header class="center">
+      <mat-card-title>
+        {{riskRegister.name}}
+        <mat-icon class="crudIcon" [routerLink]="['/registers/edit', riskRegister.id]">edit</mat-icon>
+        <mat-icon class="crudIcon" (click)="delete(riskRegister.id)">delete</mat-icon>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>ID: {{riskRegister.id}}</p>
+      <p>Project ID: {{riskRegister.projectId}}</p>
+      <div class="container">
+        <p><b>Description: </b>{{riskRegister.description}}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="half-width chip-list">
+    <mat-card-header class="center risks-list-header">
+      <mat-card-title>Risks list</mat-card-title>
+      <mat-form-field>
+        <mat-label>Order by</mat-label>
+        <mat-select (selectionChange)="sortingChange($event)">
+          <mat-option *ngFor="let sortOption of sortOptions" [value]="sortOption">
+            {{sortOption}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor="let risk of riskRegister.risks">
+          <app-risk-list-entry  [risk]="risk"></app-risk-list-entry>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>

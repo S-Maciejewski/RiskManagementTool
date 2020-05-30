@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-  })
+const httpHeaders = new HttpHeaders({
+  'Content-Type': 'application/json',
+});
+
+const rawHttpOptions = {
+  headers: httpHeaders,
 };
 
 
@@ -18,14 +20,21 @@ const api = {
   providedIn: 'root'
 })
 export class ApiGetService {
-
+  readonly httpOptions = rawHttpOptions;
   readonly apiAddress = environment.apiAddress;
 
   constructor(public http: HttpClient) { }
 
+  get(endpoint: string) {
+    return this.http.get(this.apiAddress + endpoint, this.httpOptions);
+  }
 
-  // TODO: Test api response when .Net API is properly set up
-  testApiResponse() {
-    return this.http.get(this.apiAddress + api.impact, httpOptions);
+  getWithParams(endpoint: string, params: HttpParams) {
+    return this.http.get(this.apiAddress + endpoint, { headers: httpHeaders, params: params });
+  }
+
+  //todo check, adjust, make it work...
+  apiPost(endpoint: string, body: any) {
+    return this.http.post<any>(this.apiAddress + endpoint, body, rawHttpOptions);
   }
 }

@@ -2,3 +2,38 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.list {
+  display: inline-block;
+  width: 70%;
+  height: 80%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.half-width {
+  width: 50%;
+}
+
+.crudIcon {
+  cursor: pointer;
+}
+
+.chip-list {
+  margin-top: 5px;
+}
+
+.chip-height {
+  height: auto !important;
+  margin-top: 10px !important;
+}
