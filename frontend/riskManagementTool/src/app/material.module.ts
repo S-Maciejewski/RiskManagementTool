@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { MatListModule } from '@angular/material/list';
     MatInputModule,
     MatChipsModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatSelectModule
   ],
   exports: [
     MatButtonModule,
@@ -30,7 +32,8 @@ import { MatListModule } from '@angular/material/list';
     MatInputModule,
     MatChipsModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule { }
