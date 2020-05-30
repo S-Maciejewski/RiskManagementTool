@@ -1,6 +1,5 @@
-<div class="center">
-  <a href="/projects/create" mat-raised-button color="primary">Create</a>
-  <mat-chip-list class="mat-chip-list-stacked list" *ngFor="let project of projects" >
+<div class="center" *ngIf="projects">
+  <mat-chip-list class="mat-chip-list-stacked list" *ngFor="let project of projects">
     <!-- <mat-chip (click)="goToProject(project.id)" class="chip-height center"> -->
     <mat-chip [routerLink]="['/projects/details', project.id]" class="chip-height center">
       <div>
@@ -9,4 +8,5 @@
       </div>
     </mat-chip>
   </mat-chip-list>
+  <a href="/projects/create" mat-raised-button color="primary">Create</a>
 </div>

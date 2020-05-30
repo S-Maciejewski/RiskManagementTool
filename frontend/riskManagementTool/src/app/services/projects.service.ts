@@ -5,16 +5,16 @@ import { RiskRegistersService } from './risk-registers.service';
 
 const api = {
   project: 'project', // TODO: Fix projects list (user should see just his projects)
-
+  details: 'project/details/',
+  create: 'project/create',
+  edit: 'project/edit/',
+  delete: 'project/delete/'
 };
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectsService {
-  //TODO
-  //change all mock url's with backend endpoints
-
   public currentProject: Project;
 
   constructor(private apiGetService: ApiGetService,
@@ -22,7 +22,7 @@ export class ProjectsService {
 
   getProjects() {
     let promise = new Promise((resolve, reject) => {
-      this.apiGetService.get(this.apiGetService.apiAddress + api.project).subscribe(res => {
+      this.apiGetService.get(api.project).subscribe(res => {
         var projects = JSON.parse(JSON.stringify(res));
         resolve(projects);
       });
@@ -32,18 +32,7 @@ export class ProjectsService {
 
   getProjectDetails(id: number): any {
     let promise = new Promise((resolve, reject) => {
-      var url = '';
-      if (id === 0)
-        url = 'http://www.mocky.io/v2/5ecd54f23200004f002368d5';
-      else if (id === 1)
-        url = 'http://www.mocky.io/v2/5ec46c09300000df0639c87e';
-      else if (id === 2)
-        url = 'http://www.mocky.io/v2/5ec46c1f300000f33d39c87f';
-      else
-        url = 'http://www.mocky.io/v2/5ecd63f43000006900ea0abe';
-
-      //get details
-      this.apiGetService.get(url).subscribe(res => {
+      this.apiGetService.get(api.details + id).subscribe(res => {
         var project = JSON.parse(JSON.stringify(res));
         this.currentProject = new Project(project.id, project.name, project.description);
         //get risk registers
@@ -74,7 +63,7 @@ export class ProjectsService {
       name: name,
       description: description
     }
-    this.apiGetService.apiPost("project/create", project).subscribe();
+    this.apiGetService.apiPost(api.create, project).subscribe();
   }
 
   updateProject(id: number, name: string, description: string) {
@@ -83,12 +72,11 @@ export class ProjectsService {
       name: name,
       description: description
     }
-    var endpoint = 'Project/Edit/' + id;
-    this.apiGetService.apiPost(endpoint, projectDetails).subscribe();
+    this.apiGetService.apiPost(api.edit + id, projectDetails).subscribe();
   }
 
   deleteProject(id: number) {
-    this.apiGetService.apiPost("project/delete/" + id, {}).subscribe();
+    this.apiGetService.apiPost(api.delete + id, {}).subscribe();
   }
 
 }
