@@ -1,15 +1,35 @@
 version: 2.1
 
 jobs:
-  build-backend:
+  version: 2
+  build-and-seed-database:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Logging to Docker Hub
+          command: echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
+      - run: 
+          name: Building image
+          working_directory: docker/
+          command: docker build -t $DOCKER_USER/risk-management-tool-db:latest
+      - run:
+          name: Push to Docker Hub
+          command: docker push $DOCKER_USER/risk-management-tool-db:latest
+  test-backend:
     docker:
       - image: mcr.microsoft.com/dotnet/core/sdk:3.1-alpine
+      - image: $DOCKER_USER/risk-management-tool-db:latest
     steps:
       - checkout
       - run: 
           name: Building server
           working_directory: backend
           command: 'dotnet build'
+      - run:
+          name: Run server
+          working_directory: backend
+          command: 'dotnet run localhost 5432'
   build-frontend: 
     docker:
       - image: node:13-alpine
@@ -21,9 +41,11 @@ jobs:
           command: "npm install && npm run build"
           
 workflows:
-  build_and_test_backend:
+  build-and-test:
     jobs:
-      - build-backend
-  build_frontend:
-    jobs:
+      - build-and-seed-database-image
       - build-frontend
+      - build-and-test-backend 
+          requires: 
+            - build-and-seed-database-image
+      
