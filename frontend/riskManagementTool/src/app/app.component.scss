@@ -1,3 +1,13 @@
+.full-width {
+  display: flex;
+  .controls {
+    margin-left: 30px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
 .log-out {
-  float: right
+  float: right;
 }

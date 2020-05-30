@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Cors;
 using RiskManagementAPI.Models;
 
 namespace RiskManagementAPI
@@ -30,6 +31,8 @@ namespace RiskManagementAPI
 
             services.AddDbContext<RiskManagementDbContext>(options =>
                 options.UseNpgsql(Program.DatabaseContextConnectionString));
+
+            services.AddCors();
             services.AddMvc().AddMvcOptions(opt => opt.EnableEndpointRouting = false);
         }
 
@@ -40,6 +43,13 @@ namespace RiskManagementAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(
+                    options => options
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+            );
 
             app.UseHttpsRedirection();
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from './services/authentication.service'
+import { StoreService } from './services/store.service';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,11 @@ import { AuthenticationService } from './services/authentication.service'
 export class AppComponent {
 
   constructor(
-    public authenticationService: AuthenticationService
-    ) { }
+    public authenticationService: AuthenticationService,
+    public storeService: StoreService
+  ) {
+    this.storeService.getEnums();
+  }
 
   title = 'riskManagementTool';
 }
