@@ -11,7 +11,7 @@ jobs:
       - run: 
           name: Building image
           working_directory: docker/
-          command: docker build -t $DOCKER_USER/risk-management-tool-db:latest
+          command: docker build -t $DOCKER_USER/risk-management-tool-db:latest .
       - run:
           name: Push to Docker Hub
           command: docker push $DOCKER_USER/risk-management-tool-db:latest
