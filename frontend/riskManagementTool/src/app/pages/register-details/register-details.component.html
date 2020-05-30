@@ -3,8 +3,8 @@
     <mat-card-header class="center">
       <mat-card-title>
         {{riskRegister.name}}
-        <mat-icon class="crudIcon" [routerLink]="['/registers/edit', riskRegister.id]">edit</mat-icon> 
-        <mat-icon class="crudIcon" (click)="delete(riskRegister.id)">delete</mat-icon> 
+        <mat-icon class="crudIcon" [routerLink]="['/registers/edit', riskRegister.id]">edit</mat-icon>
+        <mat-icon class="crudIcon" (click)="delete(riskRegister.id)">delete</mat-icon>
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
@@ -20,9 +20,11 @@
       <mat-card-title>Risks:</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <mat-chip-list class="mat-chip-list-stacked list" *ngFor="let risk of riskRegister.risks" >
-        <app-risk-list-entry [risk] = "risk"></app-risk-list-entry>
-      </mat-chip-list>
+      <mat-list>
+        <mat-list-item *ngFor="let risk of riskRegister.risks">
+          <app-risk-list-entry  [risk]="risk"></app-risk-list-entry>
+        </mat-list-item>
+      </mat-list>
     </mat-card-content>
   </mat-card>
 </div>

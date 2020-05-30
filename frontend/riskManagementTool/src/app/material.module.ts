@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   imports: [
@@ -15,7 +17,9 @@ import { MatChipsModule } from '@angular/material/chips';
     MatIconModule,
     MatCardModule,
     MatInputModule,
-    MatChipsModule
+    MatChipsModule,
+    MatDividerModule,
+    MatListModule
   ],
   exports: [
     MatButtonModule,
@@ -24,7 +28,9 @@ import { MatChipsModule } from '@angular/material/chips';
     MatIconModule,
     MatCardModule,
     MatInputModule,
-    MatChipsModule
+    MatChipsModule,
+    MatDividerModule,
+    MatListModule
   ]
 })
-export class MaterialModule {}
+export class MaterialModule { }

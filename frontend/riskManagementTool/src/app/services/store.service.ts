@@ -16,10 +16,13 @@ export class StoreService {
 
   constructor(private apiGetService: ApiGetService) { }
 
-  public impacts: object;
-  public probability: object;
-  public severity: object;
+  public impacts: any[];
+  public probability: any[];
+  public severity: any[];
 
+  public impactsNames: string[];
+  public probabilityNames: string[];
+  public severityNames: string[];
 
   getEnums() {
     this.fetchImpacts();
@@ -30,18 +33,21 @@ export class StoreService {
   fetchImpacts() {
     this.apiGetService.get(api.impact).subscribe(res => {
       this.impacts = JSON.parse(JSON.stringify(res));
+      this.impactsNames = this.impacts.map(o => o.name);
     });
   }
 
   fetchProbability() {
     this.apiGetService.get(api.probability).subscribe(res => {
       this.probability = JSON.parse(JSON.stringify(res));
+      this.probabilityNames = this.probability.map(o => o.name);
     });
   }
 
   fetchSeverity() {
     this.apiGetService.get(api.severity).subscribe(res => {
       this.severity = JSON.parse(JSON.stringify(res));
+      this.severityNames = this.severity.map(o => o.name);
     });
   }
 }
