@@ -1,11 +1,13 @@
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RiskManagementAPI.Models;
 
 namespace RiskManagementAPI.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     public class ProbabilityController : Controller
     {
@@ -48,6 +50,19 @@ namespace RiskManagementAPI.Controllers
         {
             if (ModelState.IsValid)
             {
+                while (true)
+                {
+                    var existingProject = _context.Probability.FirstOrDefault(r => r.Id == probability.Id);
+                    if (existingProject != null)
+                    {
+                        probability.Id = existingProject.Id + 1;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
                 _context.Add(probability);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
