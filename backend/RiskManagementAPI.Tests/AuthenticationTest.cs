@@ -13,11 +13,11 @@ using Xunit;
 
 namespace RiskManagementAPI.Tests
 {
-    public class UnitTest1 : IClassFixture<WebApplicationFactory<RiskManagementAPI.Startup>>
+    public class AuthenticationTest : IClassFixture<WebApplicationFactory<RiskManagementAPI.Startup>>
     {
         public HttpClient Client { get; }
 
-        public UnitTest1(WebApplicationFactory<RiskManagementAPI.Startup> fixture)
+        public AuthenticationTest(WebApplicationFactory<RiskManagementAPI.Startup> fixture)
         {
             Client = fixture.CreateClient();
         }
