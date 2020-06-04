@@ -27,6 +27,7 @@ namespace RiskManagementAPI.Controllers
         [HttpPost("authenticate")]
         public IActionResult Authenticate([FromBody] AuthenticateModel model)
         {
+            Console.WriteLine(model.Username, model.Password);
             var authenticationResponse = AuthenticateUser(model.Username, model.Password);
                 
             if (!authenticationResponse.Success)
