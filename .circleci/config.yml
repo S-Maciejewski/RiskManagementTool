@@ -1,7 +1,6 @@
 version: 2.1
 
 jobs:
-  version: 2
   build-and-seed-database:
     machine: true
     steps:
@@ -12,14 +11,14 @@ jobs:
       - run: 
           name: Building image
           working_directory: docker/
-          command: docker build -t $DOCKER_USER/risk-management-tool-db:latest
+          command: docker build -t $DOCKER_USER/risk-management-tool-db:latest .
       - run:
           name: Push to Docker Hub
           command: docker push $DOCKER_USER/risk-management-tool-db:latest
-  test-backend:
+  build-and-test-backend:
     docker:
       - image: mcr.microsoft.com/dotnet/core/sdk:3.1-alpine
-      - image: $DOCKER_USER/risk-management-tool-db:latest
+      - image: jantechner/risk-management-tool-db:latest
     steps:
       - checkout
       - run: 
@@ -37,11 +36,12 @@ jobs:
           command: "npm install && npm run build"
           
 workflows:
+  version: 2
   build-and-test:
     jobs:
-      - build-and-seed-database-image
+      - build-and-seed-database
       - build-frontend
-      - build-and-test-backend 
-          requires: 
-            - build-and-seed-database-image
+      - build-and-test-backend:
+          requires:
+            - build-and-seed-database
       
