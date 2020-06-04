@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RiskManagementAPI.Models;
 
@@ -51,6 +48,19 @@ namespace RiskManagementAPI.Controllers
         {
             if (ModelState.IsValid)
             {
+                while (true)
+                {
+                    var existingProject = _context.Project.FirstOrDefault(r => r.Id == project.Id);
+                    if (existingProject != null)
+                    {
+                        project.Id = existingProject.Id + 1;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
                 _context.Add(project);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

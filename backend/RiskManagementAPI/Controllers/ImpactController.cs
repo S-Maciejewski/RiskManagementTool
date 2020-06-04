@@ -51,6 +51,19 @@ namespace RiskManagementAPI.Controllers
         {
             if (ModelState.IsValid)
             {
+                while (true)
+                {
+                    var existingProject = _context.Impact.FirstOrDefault(r => r.Id == impact.Id);
+                    if (existingProject != null)
+                    {
+                        impact.Id = existingProject.Id + 1;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
                 _context.Add(impact);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
