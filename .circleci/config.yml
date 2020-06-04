@@ -23,13 +23,9 @@ jobs:
     steps:
       - checkout
       - run: 
-          name: Building server
+          name: Build and test the server
           working_directory: backend
-          command: 'dotnet build'
-      - run:
-          name: Run server
-          working_directory: backend
-          command: 'dotnet run localhost 5432'
+          command: 'dotnet test'
   build-frontend: 
     docker:
       - image: node:13-alpine
