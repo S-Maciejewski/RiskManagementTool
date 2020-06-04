@@ -1,6 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# 
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiskManagementAPI", "RiskManagementAPI\RiskManagementAPI.csproj", "{93C6802C-412B-49EE-90E0-4BA45D91C144}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiskManagementAPI.Tests", "RiskManagementAPI.Tests\RiskManagementAPI.Tests.csproj", "{00112BEA-3F50-45FA-B8B2-D9CEF1CDAB20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +15,9 @@ Global
 		{93C6802C-412B-49EE-90E0-4BA45D91C144}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93C6802C-412B-49EE-90E0-4BA45D91C144}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93C6802C-412B-49EE-90E0-4BA45D91C144}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00112BEA-3F50-45FA-B8B2-D9CEF1CDAB20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00112BEA-3F50-45FA-B8B2-D9CEF1CDAB20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00112BEA-3F50-45FA-B8B2-D9CEF1CDAB20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00112BEA-3F50-45FA-B8B2-D9CEF1CDAB20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
