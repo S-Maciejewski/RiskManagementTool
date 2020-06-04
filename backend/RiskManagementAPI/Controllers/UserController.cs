@@ -1,14 +1,18 @@
 using System;
-using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using RiskManagementAPI.Models;
 
 namespace RiskManagementAPI.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     public class UserController : Controller
     {
@@ -19,6 +23,18 @@ namespace RiskManagementAPI.Controllers
             _context = context;
         }
 
+        [AllowAnonymous]
+        [HttpPost("authenticate")]
+        public IActionResult Authenticate([FromBody] AuthenticateModel model)
+        {
+            var authenticationResponse = AuthenticateUser(model.Username, model.Password);
+                
+            if (!authenticationResponse.Success)
+                return Unauthorized(authenticationResponse);
+
+            return Ok(authenticationResponse);
+        }
+        
         [HttpGet]
         // GET: User
         public async Task<IActionResult> Index()
@@ -152,6 +168,30 @@ namespace RiskManagementAPI.Controllers
         private bool UserExists(int id)
         {
             return _context.User.Any(e => e.Id == id);
+        }
+    
+        private AuthenticationResponse AuthenticateUser(string modelUsername, string modelPassword)
+        {
+            var user = _context.User.SingleOrDefault(x => x.Login == modelUsername && x.Password == modelPassword);
+
+            if (user == null)
+            {
+                return new AuthenticationResponse(modelUsername, modelPassword, "", false);
+            }
+            
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes("This is super extra secret JWT generator key");
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[] 
+                {
+                    new Claim(ClaimTypes.Name, user.Id.ToString())
+                }),
+                Expires = DateTime.UtcNow.AddDays(1),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return new AuthenticationResponse(modelUsername, modelPassword, tokenHandler.WriteToken(token), true);
         }
     }
 }
