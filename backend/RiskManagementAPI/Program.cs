@@ -7,10 +7,10 @@ namespace RiskManagementAPI
     public class Program
     {
         public static String DatabaseServerPort = "5432";
-        public static String DatabaseServerAddress = "172.17.0.2";
+        public static String DatabaseServerAddress = "localhost";
 
         public static String DatabaseContextConnectionString =
-            "Server=172.17.0.2;Port=5432;User Id=postgres;Password=pwd;";
+            "Server=localhost;Port=5432;User Id=postgres;Password=pwd;";
 
         public static void Main(string[] args)
         {
