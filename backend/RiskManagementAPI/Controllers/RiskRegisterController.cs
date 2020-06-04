@@ -1,14 +1,13 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RiskManagementAPI.Models;
 
 namespace RiskManagementAPI.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     public class RiskRegisterController : Controller
     {
@@ -51,6 +50,19 @@ namespace RiskManagementAPI.Controllers
         {
             if (ModelState.IsValid)
             {
+                while (true)
+                {
+                    var existingProject = _context.RiskRegister.FirstOrDefault(r => r.Id == riskRegister.Id);
+                    if (existingProject != null)
+                    {
+                        riskRegister.Id = existingProject.Id + 1;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
                 _context.Add(riskRegister);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
