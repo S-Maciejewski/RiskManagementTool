@@ -1,11 +1,23 @@
 export class Risk {
-    public dateRaised: Date;
-    public description: string;
     public id: number;
-    public impactId: number;
-    public name: string;
-    public probabilityId: number;
     public registerId: number;
-    public severityId: number;
+    public dateRaised: Date;
+    public name: string;
+    public description: string;
     public status: string;
+    public impactId: number;
+    public probabilityId: number;
+    public severityId: number;
+
+    constructor(id?: number, registerId?: number, dateRaised?: Date, name?: string, description?: string, status?: string, impactId?: number, probabilityId?: number, severityId?: number) {
+        this.id = id;
+        this.registerId = registerId;
+        this.dateRaised = dateRaised;
+        this.name = name;
+        this.description = description;
+        this.status = status;
+        this.impactId = impactId;
+        this.probabilityId = probabilityId;
+        this.severityId = severityId;
+      }
 }
