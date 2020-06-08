@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'projects/create', component: CreateProjectComponent },
   { path: 'projects/details/:id', component: ProjectDetailsComponent },
   { path: 'projects/edit/:id', component: ProjectEditComponent },
-  { path: 'registers/create', component: CreateRegisterComponent },
+  { path: 'registers/create/:projectId', component: CreateRegisterComponent },
   { path: 'registers/details/:id', component: RegisterDetailsComponent },
   { path: 'registers/edit/:id', component: RegisterEditComponent },
   { path: 'risks/details/:id', component: RiskDetailsComponent }
