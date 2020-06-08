@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 import { ApiGetService } from "./api-get.service";
 import { BehaviorSubject } from 'rxjs';
 
-interface User {
-  login: string,
-  password: string,
+export interface User {
+  Username: string,
+  Password: string,
 }
 
 interface Authentication {
@@ -17,7 +17,7 @@ interface Authentication {
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private token: BehaviorSubject<string> = new BehaviorSubject<string>(undefined);
+  public token: BehaviorSubject<string> = new BehaviorSubject<string>(undefined);
 
 
   constructor(
@@ -26,35 +26,25 @@ export class AuthenticationService {
   ) { }
 
 
-  login(user: User): void { //TODO
-
-    // return this.apiGetService.http.post(`${this.apiGetService.apiAddress}/auth`, user, this.apiGetService.httpOptions).subscribe((res: Authentication) => {
-    //   if(res && res.success) {
-
-    //   }
-    // });
-
-    //todo use apiGetService
-    // if (username == 'a' && password == 'a') {
-    //   sessionStorage.setItem('authenticated', 'true');
-    // }
-    // else {
-    //   sessionStorage.setItem('authenticated', 'false');
-    // }
-    // return this.authenticated();
+  login(user: User) {
+    this.apiGetService.http.post(`${this.apiGetService.apiAddress}User/authenticate`, user, this.apiGetService.httpOptions)
+      .subscribe((res: Authentication) => {
+        if (res && res.success) {
+          this.token.next(res.token);
+        }
+      });
   }
 
   isLoggedIn(): boolean {
-    return true; //TODO
+    return this.token.value !== undefined;
   }
 
   logout(): void {
-    sessionStorage.setItem('authenticated', 'false');
+    this.token.next(undefined);
     this.router.navigate(["login"]);
   }
 
-  authenticated(): boolean {
-    return sessionStorage.getItem('authenticated') === 'true';
+  getToken(): BehaviorSubject<string> {
+    return this.token;
   }
-
 }

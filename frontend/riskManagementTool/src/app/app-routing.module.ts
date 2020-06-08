@@ -10,13 +10,14 @@ import { RegisterDetailsComponent } from "./pages/register-details/register-deta
 import { RegisterEditComponent } from './pages/register-edit/register-edit.component';
 import { CreateRegisterComponent } from './pages/create-register/create-register.component';
 import { RiskDetailsComponent } from './pages/risk-details/risk-details.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'main', component: MainViewComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'projects', component: ProjectsComponent },
+  { path: 'projects', component: ProjectsComponent, canActivate: [AuthGuard] },
   { path: 'projects/create', component: CreateProjectComponent },
   { path: 'projects/details/:id', component: ProjectDetailsComponent },
   { path: 'projects/edit/:id', component: ProjectEditComponent },

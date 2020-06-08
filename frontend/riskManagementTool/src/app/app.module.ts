@@ -18,6 +18,7 @@ import { RegisterEditComponent } from './pages/register-edit/register-edit.compo
 import { CreateRegisterComponent } from './pages/create-register/create-register.component';
 import { RiskDetailsComponent } from './pages/risk-details/risk-details.component';
 import { RiskListEntryComponent } from './components/risk-list-entry/risk-list-entry.component';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { RiskListEntryComponent } from './components/risk-list-entry/risk-list-e
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

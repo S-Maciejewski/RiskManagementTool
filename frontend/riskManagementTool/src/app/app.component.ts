@@ -13,7 +13,7 @@ export class AppComponent {
     public authenticationService: AuthenticationService,
     public storeService: StoreService
   ) {
-    this.storeService.getEnums();
+    // this.storeService.getEnums();
   }
 
   title = 'riskManagementTool';
