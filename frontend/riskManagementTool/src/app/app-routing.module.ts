@@ -9,7 +9,7 @@ import { ProjectEditComponent } from "./pages/project-edit/project-edit.componen
 import { RegisterDetailsComponent } from "./pages/register-details/register-details.component";
 import { RegisterEditComponent } from './pages/register-edit/register-edit.component';
 import { CreateRegisterComponent } from './pages/create-register/create-register.component';
-import { RiskDetailsComponent } from './pages/risk-details/risk-details.component';
+import { RiskEditComponent } from './pages/risk-edit/risk-edit.component';
 import { AuthGuard } from './guards/auth.guard';
 
 
@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'registers/create/:projectId', component: CreateRegisterComponent },
   { path: 'registers/details/:id', component: RegisterDetailsComponent },
   { path: 'registers/edit/:id', component: RegisterEditComponent },
-  { path: 'risks/details/:id', component: RiskDetailsComponent }
+  { path: 'risks/edit/:id', component: RiskEditComponent }
 ];
 
 @NgModule({

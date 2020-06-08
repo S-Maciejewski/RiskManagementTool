@@ -16,7 +16,7 @@ import { ProjectEditComponent } from './pages/project-edit/project-edit.componen
 import { RegisterDetailsComponent } from './pages/register-details/register-details.component';
 import { RegisterEditComponent } from './pages/register-edit/register-edit.component';
 import { CreateRegisterComponent } from './pages/create-register/create-register.component';
-import { RiskDetailsComponent } from './pages/risk-details/risk-details.component';
+import { RiskEditComponent } from './pages/risk-edit/risk-edit.component';
 import { RiskListEntryComponent } from './components/risk-list-entry/risk-list-entry.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
@@ -33,7 +33,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     RegisterDetailsComponent,
     RegisterEditComponent,
     CreateRegisterComponent,
-    RiskDetailsComponent,
+    RiskEditComponent,
     RiskListEntryComponent
   ],
   imports: [
