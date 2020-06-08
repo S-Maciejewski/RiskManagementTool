@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../../services/authentication.service'
+import { AuthenticationService, User } from '../../services/authentication.service'
 import { StoreService } from 'src/app/services/store.service';
 
 @Component({
@@ -14,7 +14,14 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private storeService: StoreService
-  ) { }
+  ) {
+    this.authenticationService.getToken().subscribe(token => {
+      if (this.authenticationService.isLoggedIn()) {
+        this.router.navigate(["projects"]);
+        this.storeService.getEnums();
+      }
+    });
+  }
 
   username: string;
   password: string;
@@ -22,19 +29,13 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     if (this.authenticationService.isLoggedIn()) {
       this.router.navigate(["projects"]);
-      this.storeService.getEnums(); //get enum values once, after log in
+      this.storeService.getEnums();
     }
   }
 
   login(): void {
-    // TODO: call login function from auth service
-
-    // if (this.authenticationService.isLoggedIn()) {
-      // this.router.navigate(["projects"]);
-    // }
-    // else {
-      // alert("Invalid credentials!");
-    // }
+    let user = { "Username": this.username, "Password": this.password } as User;
+    this.authenticationService.login(user);
   }
 
 }

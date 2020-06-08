@@ -28,7 +28,6 @@ export class RegisterDetailsComponent implements OnInit {
       this.riskRegistersService.getRegisterDetails(id).then(
         result => {
           this.riskRegister = new RiskRegister(id, result.projectId, result.name, result.description, result.risks);
-          console.log(this.riskRegister);
         }
       );
     });
