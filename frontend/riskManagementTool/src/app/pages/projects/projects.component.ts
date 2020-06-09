@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from "../../services/projects.service";
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './projects.component.html',
@@ -9,6 +10,7 @@ export class ProjectsComponent implements OnInit {
 
   constructor(
     private projectsService: ProjectsService,
+    private router: Router
     ) { }
 
   projects: any;
@@ -23,6 +25,10 @@ export class ProjectsComponent implements OnInit {
         this.projects = result;
       }
     );
+  }
+
+  openCreateView() {
+    this.router.navigate(['projects/create']);
   }
 
 }

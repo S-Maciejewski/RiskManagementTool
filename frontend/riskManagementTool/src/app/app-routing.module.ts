@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MainViewComponent } from './pages/main-view/main-view.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { CreateProjectComponent } from "./pages/create-project/create-project.component";
@@ -14,17 +13,20 @@ import { AuthGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'main', component: MainViewComponent },
+  {
+    path: '', canActivate: [AuthGuard], children: [
+      { path: '', redirectTo: '/login', pathMatch: 'full' },
+      { path: 'projects', component: ProjectsComponent },
+      { path: 'projects/create', component: CreateProjectComponent },
+      { path: 'projects/details/:id', component: ProjectDetailsComponent },
+      { path: 'projects/edit/:id', component: ProjectEditComponent },
+      { path: 'registers/create/:projectId', component: CreateRegisterComponent },
+      { path: 'registers/details/:id', component: RegisterDetailsComponent },
+      { path: 'registers/edit/:id', component: RegisterEditComponent },
+      { path: 'risks/edit/:id', component: RiskEditComponent }
+  ]
+  },
   { path: 'login', component: LoginComponent },
-  { path: 'projects', component: ProjectsComponent, canActivate: [AuthGuard] },
-  { path: 'projects/create', component: CreateProjectComponent },
-  { path: 'projects/details/:id', component: ProjectDetailsComponent },
-  { path: 'projects/edit/:id', component: ProjectEditComponent },
-  { path: 'registers/create/:projectId', component: CreateRegisterComponent },
-  { path: 'registers/details/:id', component: RegisterDetailsComponent },
-  { path: 'registers/edit/:id', component: RegisterEditComponent },
-  { path: 'risks/edit/:id', component: RiskEditComponent }
 ];
 
 @NgModule({
