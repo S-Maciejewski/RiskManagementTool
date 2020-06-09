@@ -1,1 +1,55 @@
-<p>risk-edit works!</p>
+<div class="center">
+  <mat-card class="half-width">
+    <mat-card-header class="center">
+      <mat-card-title>Edit risk details</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form #riskForm="ngForm" class="center">
+        <table cellspacing="0" class="full-width">
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Name" [(ngModel)]="risk.name" maxlength="30" name="name" required>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <mat-label>Optional description</mat-label>
+                <textarea cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="20"
+                matInput [(ngModel)]="risk.description" name="description" required></textarea>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <mat-label>Status</mat-label>
+                <textarea cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="20"
+                matInput [(ngModel)]="risk.status" name="status"required></textarea>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <mat-form-field>
+                  <mat-label>Impact</mat-label>
+                  <mat-select [(ngModel)]="risk.impactId">
+                    <mat-option *ngFor="let impact of impacts" [value]="impact.value">
+                      {{impact.name || ""}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </mat-card-content>
+    <mat-card-actions class="center">
+      <button mat-raised-button color="primary" (click)="save()" type="submit" [disabled]="riskForm.invalid">Save</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

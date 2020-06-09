@@ -3,5 +3,12 @@ mat-card {
         display: flex;
         justify-content: space-around;
         font-weight: 500;
+        margin-top: 15px;
+    }
+
+    .box {
+        border: 1px solid grey;
+        border-radius: 5px;
+        margin: 5px;
     }
 }

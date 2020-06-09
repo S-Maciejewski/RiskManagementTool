@@ -2,7 +2,14 @@
     <mat-card-title>{{risk.name}}</mat-card-title>
     <mat-card-subtitle>{{risk.dateRaised.toLocaleDateString()}}</mat-card-subtitle>
     <mat-card-content>
-        <p>{{risk.description}}</p>
+        <div class="box">
+            <B>Description:</B>
+            <p>{{risk.description}}</p>
+        </div>
+        <div class="box">
+            <B>Status:</B>
+            <p>{{risk.status}}</p>
+        </div>
         <div class="details">
             <div>
                 Impact: {{impact}}
@@ -16,8 +23,9 @@
         </div>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button color="primary" [routerLink]="['/risks/details', risk.id]">Edit</button>
-        <button mat-raised-button color="primary" [routerLink]="['/risks/details', risk.id]">Responses</button>
+        <button mat-raised-button color="primary" [routerLink]="['/risks/edit', risk.id]">Edit</button>
+        <button mat-raised-button color="primary" [routerLink]="['/risks/edit', risk.id]">Responses</button>
+        <button mat-raised-button color="primary" (click)="delete()">Delete</button>
     </mat-card-actions>
 
 </mat-card>
