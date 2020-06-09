@@ -1,13 +1,15 @@
 <div class="center" *ngIf="projects">
   <mat-card class="half-width chip-list mat-card-outer" *ngIf="projects">
-    <mat-card-header class="center">
-      <mat-card-title>
-        Projects
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-actions class="center">
-      <button mat-raised-button (click)="openCreateView()" color="primary">Create</button>
-    </mat-card-actions>
+    <mat-grid-list cols="6" rowHeight="4rem">
+      <mat-grid-tile colspan="2" rowspan="1"></mat-grid-tile>
+      <mat-grid-tile colspan="2" rowspan="1" class="title">
+        Risk registers
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1"></mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+          <button mat-raised-button (click)="openCreateView()" color="primary">Create</button>
+      </mat-grid-tile>
+    </mat-grid-list>
     <mat-card-content>
       <mat-chip-list class="mat-chip-list-stacked list" *ngFor="let project of projects">
         <mat-chip [routerLink]="['/projects/details', project.id]" class="chip-height center">
