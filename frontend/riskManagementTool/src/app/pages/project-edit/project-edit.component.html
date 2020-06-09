@@ -16,9 +16,9 @@
           <tr>
             <td>
               <mat-form-field class="full-width">
-                <mat-label>Optional description</mat-label>
+                <mat-label>Description</mat-label>
                 <textarea cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="20"
-                matInput [(ngModel)]="project.description" name="description"></textarea>
+                matInput [(ngModel)]="project.description" name="description" required></textarea>
               </mat-form-field>
             </td>
           </tr>
