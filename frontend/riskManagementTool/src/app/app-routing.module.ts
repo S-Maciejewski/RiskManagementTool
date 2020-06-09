@@ -9,6 +9,7 @@ import { RegisterDetailsComponent } from "./pages/register-details/register-deta
 import { RegisterEditComponent } from './pages/register-edit/register-edit.component';
 import { CreateRegisterComponent } from './pages/create-register/create-register.component';
 import { RiskEditComponent } from './pages/risk-edit/risk-edit.component';
+import { RiskCreateComponent } from './pages/risk-create/risk-create.component';
 import { AuthGuard } from './guards/auth.guard';
 
 
@@ -23,6 +24,7 @@ const routes: Routes = [
       { path: 'registers/create/:projectId', component: CreateRegisterComponent },
       { path: 'registers/details/:id', component: RegisterDetailsComponent },
       { path: 'registers/edit/:id', component: RegisterEditComponent },
+      { path: 'risks/create/:registerId', component: RiskCreateComponent },
       { path: 'risks/edit/:id', component: RiskEditComponent }
   ]
   },

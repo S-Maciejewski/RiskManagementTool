@@ -1,5 +1,5 @@
 <div class="center">
-  <mat-card class="half-width">
+  <mat-card class="half-width mat-card-outer">
     <mat-card-header class="center">
       <mat-card-title>
         {{riskRegister.name}}
@@ -15,9 +15,18 @@
       </div>
     </mat-card-content>
   </mat-card>
-  <mat-card class="half-width chip-list">
-    <mat-card-header class="center risks-list-header">
-      <mat-card-title>Risks list</mat-card-title>
+  <mat-card class="half-width chip-list mat-card-outer">
+    <div>
+      <mat-grid-list cols="2">
+        <mat-card-tile colspan="1" class="title">
+          Risks list
+        </mat-card-tile>
+        <mat-card-tile colspan="1">
+            <button mat-raised-button (click)="openCreateView()" color="primary">Create</button>
+        </mat-card-tile>
+      </mat-grid-list>
+    </div>
+    <div>
       <mat-form-field>
         <mat-label>Order by</mat-label>
         <mat-select (selectionChange)="sortingChange($event)">
@@ -26,7 +35,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-    </mat-card-header>
+    </div>
     <mat-card-content>
       <mat-list>
         <mat-list-item *ngFor="let risk of riskRegister.risks">

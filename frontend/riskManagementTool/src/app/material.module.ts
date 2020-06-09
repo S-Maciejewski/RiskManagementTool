@@ -9,6 +9,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatChipsModule,
     MatDividerModule,
     MatListModule,
-    MatSelectModule
+    MatSelectModule,
+    MatGridListModule
   ],
   exports: [
     MatButtonModule,
@@ -33,7 +35,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatChipsModule,
     MatDividerModule,
     MatListModule,
-    MatSelectModule
+    MatSelectModule,
+    MatGridListModule
   ]
 })
 export class MaterialModule { }

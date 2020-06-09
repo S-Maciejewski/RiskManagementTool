@@ -20,6 +20,7 @@ import { RiskEditComponent } from './pages/risk-edit/risk-edit.component';
 import { RiskListEntryComponent } from './components/risk-list-entry/risk-list-entry.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { RiskCreateComponent } from './pages/risk-create/risk-create.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     RegisterEditComponent,
     CreateRegisterComponent,
     RiskEditComponent,
-    RiskListEntryComponent
+    RiskListEntryComponent,
+    RiskCreateComponent
   ],
   imports: [
     BrowserModule,

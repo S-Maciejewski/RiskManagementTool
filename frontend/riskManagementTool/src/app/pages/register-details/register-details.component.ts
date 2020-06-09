@@ -38,6 +38,10 @@ export class RegisterDetailsComponent implements OnInit {
     this.router.navigate(['/projects/details/' + this.riskRegister.projectId]);
   }
 
+  openCreateView() {
+    this.router.navigate(['risks/create', this.riskRegister.id]);
+  }
+
   sortingChange(event) {
     switch (event.value) {
       case 'Impact': this.riskRegister.risks = (this.riskRegister.risks as Risk[]).sort((a, b) => b.impactId - a.impactId);

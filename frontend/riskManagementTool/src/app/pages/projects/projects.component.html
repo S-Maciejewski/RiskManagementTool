@@ -5,6 +5,9 @@
         Projects
       </mat-card-title>
     </mat-card-header>
+    <mat-card-actions class="center">
+      <button mat-raised-button (click)="openCreateView()" color="primary">Create</button>
+    </mat-card-actions>
     <mat-card-content>
       <mat-chip-list class="mat-chip-list-stacked list" *ngFor="let project of projects">
         <mat-chip [routerLink]="['/projects/details', project.id]" class="chip-height center">
@@ -15,8 +18,5 @@
         </mat-chip>
       </mat-chip-list>
     </mat-card-content>
-    <mat-card-actions class="center">
-      <button mat-raised-button (click)="openCreateView()" color="primary">Create</button>
-    </mat-card-actions>
   </mat-card>
 </div>
