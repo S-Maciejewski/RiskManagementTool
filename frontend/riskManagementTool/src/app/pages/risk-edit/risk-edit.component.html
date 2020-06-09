@@ -37,7 +37,31 @@
                 <mat-label>Impact</mat-label>
                 <mat-select [(ngModel)]="risk.impactId" name="impact" required>
                   <mat-option *ngFor="let impact of impacts" [value]="impact.value">
-                    {{impact.name || ""}}
+                    {{impact.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <mat-label>Probability</mat-label>
+                <mat-select [(ngModel)]="risk.probabilityId" name="probability" required>
+                  <mat-option *ngFor="let probability of probabilities" [value]="probability.value">
+                    {{probability.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <mat-label>Severity</mat-label>
+                <mat-select [(ngModel)]="risk.severityId" name="severity" required>
+                  <mat-option *ngFor="let severity of severities" [value]="severity.value">
+                    {{severity.name}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>

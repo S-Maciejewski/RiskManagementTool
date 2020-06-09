@@ -1,1 +1,77 @@
-<p>risk-create works!</p>
+<div class="center">
+  <mat-card class="half-width">
+    <mat-card-header class="center">
+      <mat-card-title>Create risk</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form #riskForm="ngForm" class="center">
+        <table cellspacing="0" class="full-width">
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Name" [(ngModel)]="risk.name" maxlength="30" name="name" required>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <mat-label>Description</mat-label>
+                <textarea cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="20"
+                matInput [(ngModel)]="risk.description" name="description" required></textarea>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <mat-label>Status</mat-label>
+                <textarea cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="20"
+                matInput [(ngModel)]="risk.status" name="status" required></textarea>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <mat-label>Impact</mat-label>
+                <mat-select [(ngModel)]="risk.impactId" name="impact" required>
+                  <mat-option *ngFor="let impact of impacts" [value]="impact.value">
+                    {{impact.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <mat-label>Probability</mat-label>
+                <mat-select [(ngModel)]="risk.probabilityId" name="probability" required>
+                  <mat-option *ngFor="let probability of probabilities" [value]="probability.value">
+                    {{probability.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <mat-label>Severity</mat-label>
+                <mat-select [(ngModel)]="risk.severityId" name="severity" required>
+                  <mat-option *ngFor="let severity of severities" [value]="severity.value">
+                    {{severity.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </mat-card-content>
+    <mat-card-actions class="center">
+      <button mat-raised-button color="primary" (click)="create()" type="submit" [disabled]="riskForm.invalid">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
