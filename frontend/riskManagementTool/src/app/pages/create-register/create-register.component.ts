@@ -24,7 +24,6 @@ export class CreateRegisterComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.projectId = +params.get('projectId');
     });
-    this.description = "";
   }
 
   public create(): void {

@@ -40,22 +40,11 @@ export class RisksService {
     return promise;
   }
 
-  createRisk(registerId: number, dateRaised: Date, name: string, description: string, status: string, impactId: number, probabilityId: number, severityId: number) {
-    var risk = {
-      registerId: registerId,
-      dateRaised: dateRaised,
-      name: name,
-      description: description,
-      status: status,
-      impactId: impactId,
-      probabilityId: probabilityId,
-      severityId: severityId
-    }
+  createRisk(risk: Risk) {
     this.apiGetService.apiPost(api.create, risk).subscribe();
   }
 
   updateRisk(risk: Risk) {
-    //TODO is it working with Risk object?
     this.apiGetService.apiPost(api.edit + risk.id, risk).subscribe();
   }
 

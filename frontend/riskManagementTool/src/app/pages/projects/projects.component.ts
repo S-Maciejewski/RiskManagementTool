@@ -20,7 +20,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   getProjects() {
-    this.projects = this.projectsService.getProjects().then(
+    this.projectsService.getProjects().then(
       result => {
         this.projects = result;
       }
