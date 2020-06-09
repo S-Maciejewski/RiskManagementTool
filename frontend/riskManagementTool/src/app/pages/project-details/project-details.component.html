@@ -1,5 +1,5 @@
 <div class="center">
-  <mat-card class="half-width">
+  <mat-card class="half-width mat-card-outer">
     <mat-card-header class="center">
       <mat-card-title>
         {{project.name}}
@@ -14,11 +14,11 @@
       </div>
     </mat-card-content>
   </mat-card>
-  <mat-card class="half-width chip-list">
+  <mat-card class="half-width chip-list mat-card-outer">
     <mat-card-header class="center">
       <mat-card-title>
         Risk registers
-        <button mat-button (click)="openCreateView()">Add</button>
+        <button mat-raised-button (click)="openCreateView()" color="primary">Add</button>
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RiskRegistersService } from "../../services/risk-registers.service";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -13,6 +13,7 @@ export class CreateRegisterComponent implements OnInit {
   constructor(
     private riskRegistersService: RiskRegistersService,
     private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   projectId: number;
@@ -23,10 +24,12 @@ export class CreateRegisterComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.projectId = +params.get('projectId');
     });
+    this.description = "";
   }
 
   public create(): void {
     this.riskRegistersService.createRegister(this.projectId, this.name, this.description);
+    this.router.navigate(['/projects/details', this.projectId]);
   }
 
 }

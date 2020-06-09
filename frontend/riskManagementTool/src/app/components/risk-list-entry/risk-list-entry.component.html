@@ -1,31 +1,40 @@
-<mat-card>
+<mat-card class="chip-list card-border">
     <mat-card-title>{{risk.name}}</mat-card-title>
     <mat-card-subtitle>{{risk.dateRaised.toLocaleDateString()}}</mat-card-subtitle>
     <mat-card-content>
-        <div class="box">
-            <B>Description:</B>
-            <p>{{risk.description}}</p>
-        </div>
-        <div class="box">
-            <B>Status:</B>
-            <p>{{risk.status}}</p>
-        </div>
-        <div class="details">
-            <div>
-                Impact: {{impact}}
-            </div>
-            <div>
-                Probability: {{probability}}
-            </div>
-            <div>
-                Severity: {{severity}}
-            </div>
-        </div>
+        <mat-list>
+                <mat-card class="chip-list">
+                    <mat-card-content>
+                        <B>Description</B>
+                        <p>{{risk.description}}</p>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="chip-list">
+                    <mat-card-content>
+                        <B>Status</B>
+                        <p>{{risk.status}}</p>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="chip-list">
+                    <mat-card-content>
+                        <div class="details">
+                            <div>
+                                Impact: {{impact}}
+                            </div>
+                            <div>
+                                Probability: {{probability}}
+                            </div>
+                            <div>
+                                Severity: {{severity}}
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+        </mat-list>
     </mat-card-content>
     <mat-card-actions>
         <button mat-raised-button color="primary" [routerLink]="['/risks/edit', risk.id]">Edit</button>
         <button mat-raised-button color="primary" [routerLink]="['/risks/edit', risk.id]">Responses</button>
         <button mat-raised-button color="primary" (click)="delete()">Delete</button>
     </mat-card-actions>
-
 </mat-card>

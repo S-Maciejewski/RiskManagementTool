@@ -37,7 +37,7 @@ export class ProjectDetailsComponent implements OnInit {
   }
 
   openCreateView() {
-    this.router.navigate(['registers/create']);
+    this.router.navigate(['registers/create', this.project.id]);
   }
 
 }

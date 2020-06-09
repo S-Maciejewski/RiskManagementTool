@@ -1,9 +1,9 @@
-<mat-toolbar>
+<mat-toolbar class="toolbar">
   <div fxShow="true" fxHide.lt-md="true" class="full-width">
     RiskManagementTool
     <div *ngIf="authenticationService.isLoggedIn()" class="controls">
-      <button mat-button (click)="openProjectsView()">Projects</button>
-      <button mat-button (click)="authenticationService.logout()">Log out</button>
+      <button mat-raised-button (click)="openProjectsView()">Projects</button>
+      <button mat-raised-button (click)="authenticationService.logout()">Log out</button>
     </div>
   </div>
 </mat-toolbar>
