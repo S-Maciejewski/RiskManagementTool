@@ -25,15 +25,19 @@ export class ProjectDetailsComponent implements OnInit {
       var id = +params.get('id');
       this.projectsService.getProjectDetails(id).then(
         result => {
-            this.project = new Project(id, result.name, result.description, result.riskRegisters);
+          this.project = new Project(id, result.name, result.description, result.riskRegisters);
         }
       );
-    });   
+    });
   }
 
   delete(id: number) {
     this.projectsService.deleteProject(id);
     this.router.navigate(['/projects']);
+  }
+
+  openCreateView() {
+    this.router.navigate(['registers/create']);
   }
 
 }
