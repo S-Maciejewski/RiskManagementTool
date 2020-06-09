@@ -27,21 +27,19 @@
               <mat-form-field class="full-width">
                 <mat-label>Status</mat-label>
                 <textarea cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="20"
-                matInput [(ngModel)]="risk.status" name="status"required></textarea>
+                matInput [(ngModel)]="risk.status" name="status" required></textarea>
               </mat-form-field>
             </td>
           </tr>
           <tr>
             <td>
               <mat-form-field class="full-width">
-                <mat-form-field>
-                  <mat-label>Impact</mat-label>
-                  <mat-select [(ngModel)]="risk.impactId">
-                    <mat-option *ngFor="let impact of impacts" [value]="impact.value">
-                      {{impact.name || ""}}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
+                <mat-label>Impact</mat-label>
+                <mat-select [(ngModel)]="risk.impactId" name="impact" required>
+                  <mat-option *ngFor="let impact of impacts" [value]="impact.value">
+                    {{impact.name || ""}}
+                  </mat-option>
+                </mat-select>
               </mat-form-field>
             </td>
           </tr>

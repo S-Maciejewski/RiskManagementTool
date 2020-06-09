@@ -44,14 +44,15 @@ export class RiskEditComponent implements OnInit {
   }
 
   getRisk() {
-    this.risk = this.risksService.getEditDetails(this.risk.id);
-    //ITS UNDEFINED HERE!
-    console.log("NAME: " + this.risk.name);
+    this.risksService.getRiskDetails(this.risk.id).then(
+      result => {
+        this.risk = result;
+      }
+    );
   }
 
   public save(): void {
     this.risksService.updateRisk(this.risk);
     this.router.navigate(['/registers/details/' + this.risk.registerId]);
   }
-
 }
