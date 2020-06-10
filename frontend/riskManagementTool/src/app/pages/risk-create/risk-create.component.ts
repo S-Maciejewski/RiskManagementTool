@@ -39,8 +39,10 @@ export class RiskCreateComponent implements OnInit {
   }
 
   public create(): void {
-    this.risksService.createRisk(this.risk);
-    this.router.navigate(['/registers/details', this.risk.registerId]);
+    this.risksService.createRisk(this.risk).subscribe(res => {
+      if (res)
+        this.router.navigate(['/registers/details', this.risk.registerId]);
+    });
   }
 
 }

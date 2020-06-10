@@ -18,7 +18,7 @@ export class CreateRegisterComponent implements OnInit {
 
   projectId: number;
   name: string;
-  description: string; 
+  description: string;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -27,8 +27,11 @@ export class CreateRegisterComponent implements OnInit {
   }
 
   public create(): void {
-    this.riskRegistersService.createRegister(this.projectId, this.name, this.description);
-    this.router.navigate(['/projects/details', this.projectId]);
+    this.riskRegistersService.createRegister(this.projectId, this.name, this.description)
+      .subscribe(res => {
+        if (res)
+          this.router.navigate(['/projects/details', this.projectId]);
+      });
   }
 
 }

@@ -41,15 +41,15 @@ export class RisksService {
   }
 
   createRisk(risk: Risk) {
-    this.apiGetService.apiPost(api.create, risk).subscribe();
+    return this.apiGetService.apiPost(api.create, risk);
   }
 
   updateRisk(risk: Risk) {
-    this.apiGetService.apiPost(api.edit + risk.id, risk).subscribe();
+    return this.apiGetService.apiPost(api.edit + risk.id, risk);
   }
 
   deleteRisk(id: number) {
-    this.apiGetService.apiPost(api.delete + id, {}).subscribe();
+    return this.apiGetService.apiPost(api.delete + id, {});
   }
 
 }

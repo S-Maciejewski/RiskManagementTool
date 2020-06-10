@@ -34,8 +34,10 @@ export class RegisterDetailsComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.riskRegistersService.deleteRegister(id);
-    this.router.navigate(['/projects/details/' + this.riskRegister.projectId]);
+    this.riskRegistersService.deleteRegister(id).subscribe(res => {
+      if (res)
+        this.router.navigate(['/projects/details/' + this.riskRegister.projectId]);
+    });
   }
 
   openCreateView() {

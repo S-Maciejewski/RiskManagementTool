@@ -35,8 +35,12 @@ export class RegisterEditComponent implements OnInit {
   }
 
   public save(): void {
-    this.riskRegistersService.updateRegister(this.riskRegister.id, this.riskRegister.projectId, this.riskRegister.name, this.riskRegister.description);
-    this.router.navigate(['/registers/details/' + this.riskRegister.id]);
+    this.riskRegistersService.updateRegister(this.riskRegister.id, this.riskRegister.projectId, this.riskRegister.name, this.riskRegister.description)
+      .subscribe(res => {
+        if (res)
+          this.router.navigate(['/registers/details/' + this.riskRegister.id]);
+
+      });
   }
 
 }

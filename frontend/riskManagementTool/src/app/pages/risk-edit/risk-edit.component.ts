@@ -52,7 +52,9 @@ export class RiskEditComponent implements OnInit {
   }
 
   public save(): void {
-    this.risksService.updateRisk(this.risk);
-    this.router.navigate(['/registers/details/' + this.risk.registerId]);
+    this.risksService.updateRisk(this.risk).subscribe(res => {
+      if (res)
+        this.router.navigate(['/registers/details/' + this.risk.registerId]);
+    });
   }
 }
