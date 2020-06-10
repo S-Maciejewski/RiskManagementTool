@@ -63,7 +63,7 @@ export class ProjectsService {
       name: name,
       description: description
     }
-    this.apiGetService.apiPost(api.create, project).subscribe();
+    return this.apiGetService.apiPost(api.create, project);
   }
 
   updateProject(id: number, name: string, description: string) {
@@ -72,11 +72,11 @@ export class ProjectsService {
       name: name,
       description: description
     }
-    this.apiGetService.apiPost(api.edit + id, projectDetails).subscribe();
+    return this.apiGetService.apiPost(api.edit + id, projectDetails);
   }
 
   deleteProject(id: number) {
-    this.apiGetService.apiPost(api.delete + id, {}).subscribe();
+    return this.apiGetService.apiPost(api.delete + id, {});
   }
 
 }
