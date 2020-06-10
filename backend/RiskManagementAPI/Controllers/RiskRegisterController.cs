@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -20,9 +21,9 @@ namespace RiskManagementAPI.Controllers
 
         [HttpGet]
         // GET: RiskRegister
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int projectId)
         {
-            return Json(await _context.RiskRegister.ToListAsync());
+            return Json(await _context.RiskRegister.Where(rr => rr.ProjectId == projectId).ToListAsync());
         }
 
         [HttpGet("details/{id}")]

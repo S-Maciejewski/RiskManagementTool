@@ -20,9 +20,9 @@ namespace RiskManagementAPI.Controllers
 
         [HttpGet]
         // GET: Risk
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int registerId)
         {
-            return Json(await _context.Risk.ToListAsync());
+            return Json(await _context.Risk.Where(risk => risk.RegisterId == registerId).ToListAsync());
         }
 
         [HttpGet("details/{id}")]
