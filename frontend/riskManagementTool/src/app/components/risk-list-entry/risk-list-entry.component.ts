@@ -33,7 +33,8 @@ export class RiskListEntryComponent implements OnInit {
   delete() {
     this.risksService.deleteRisk(this.risk.id).subscribe(res => {
       if (res) {
-        this.router.navigate(['/registers/details/' + this.risk.registerId]);
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+          this.router.navigate(['/registers/details/' + this.risk.registerId]));
       }
     });
   }
