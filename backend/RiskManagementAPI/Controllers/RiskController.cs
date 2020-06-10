@@ -146,6 +146,7 @@ namespace RiskManagementAPI.Controllers
             _context.Response.RemoveRange(responses);
             var properties = await _context.RiskProperty.Where(r => r.RiskId == id).ToListAsync();
             _context.RiskProperty.RemoveRange(properties);
+            await _context.SaveChangesAsync();
             var risk = await _context.Risk.FindAsync(id);
             _context.Risk.Remove(risk);
             await _context.SaveChangesAsync();
