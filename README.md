@@ -1,5 +1,8 @@
 # Risk Management Tool
 
+[![CircleCI](https://circleci.com/github/S-Maciejewski/RiskManagementTool.svg?style=svg&circle-token=34778a6f9583e49d8fec7cce991dbf42f865c8b8)](https://circleci.com/github/S-Maciejewski/RiskManagementTool)
+
+
 The Risk Management Tool is designed as an aid in the process of risk management. Main functionalities of the application include the ability to keep a register of identified risks for multiple projects. 
 Each of register entries - 'risks' - can be described by the user with it's qualitative and quantitative properties, making the process of risk eavaluation easier and providing a valuable insight for planning risk response. Managing risk responses is also one of the tool's functionalities, allowing user to keep a risk response plans for each of risk register entries. 
 
