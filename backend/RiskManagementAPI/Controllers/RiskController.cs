@@ -143,15 +143,9 @@ namespace RiskManagementAPI.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var responses = await _context.Response.Where(resp => resp.RiskId == id).ToListAsync();
-            foreach (var r in responses)
-            {
-                _context.Response.Remove(r);
-            }
+            _context.Response.RemoveRange(responses);
             var properties = await _context.RiskProperty.Where(r => r.RiskId == id).ToListAsync();
-            foreach (var p in properties)
-            {
-                _context.RiskProperty.Remove(p);
-            }
+            _context.RiskProperty.RemoveRange(properties);
             var risk = await _context.Risk.FindAsync(id);
             _context.Risk.Remove(risk);
             await _context.SaveChangesAsync();
