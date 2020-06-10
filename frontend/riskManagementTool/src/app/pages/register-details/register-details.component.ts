@@ -40,6 +40,10 @@ export class RegisterDetailsComponent implements OnInit {
     });
   }
 
+  back() {
+    this.router.navigate(['/projects/details/' + this.riskRegister.projectId]);
+  }
+
   openCreateView() {
     this.router.navigate(['risks/create', this.riskRegister.id]);
   }
