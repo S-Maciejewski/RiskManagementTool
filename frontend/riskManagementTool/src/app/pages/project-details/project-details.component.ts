@@ -32,8 +32,11 @@ export class ProjectDetailsComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.projectsService.deleteProject(id);
-    this.router.navigate(['/projects']);
+    this.projectsService.deleteProject(id).subscribe(res => {
+      if (res)
+        this.router.navigate(['/projects']);
+
+    });
   }
 
   openCreateView() {

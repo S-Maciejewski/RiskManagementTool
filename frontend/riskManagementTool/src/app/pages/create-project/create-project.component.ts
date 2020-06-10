@@ -15,15 +15,17 @@ export class CreateProjectComponent implements OnInit {
   ) { }
 
   name: string;
-  description: string; 
+  description: string;
 
   ngOnInit(): void {
     this.description = "";
   }
 
   public create(): void {
-    this.projectsService.createProject(this.name, this.description);
-    this.router.navigate(['/projects']);
+    this.projectsService.createProject(this.name, this.description).subscribe(res => {
+      if (res)
+        this.router.navigate(['/projects']);
+    });
   }
 
 }

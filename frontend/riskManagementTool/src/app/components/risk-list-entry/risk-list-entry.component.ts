@@ -21,7 +21,7 @@ export class RiskListEntryComponent implements OnInit {
     private router: Router,
     private risksService: RisksService,
     private storeService: StoreService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.risk.dateRaised = new Date(this.risk.dateRaised);
@@ -31,8 +31,11 @@ export class RiskListEntryComponent implements OnInit {
   }
 
   delete() {
-    this.risksService.deleteRisk(this.risk.id);
-    this.router.navigate(['/registers/details/' + this.risk.registerId]);
+    this.risksService.deleteRisk(this.risk.id).subscribe(res => {
+      if (res) {
+        this.router.navigate(['/registers/details/' + this.risk.registerId]);
+      }
+    });
   }
 
 }

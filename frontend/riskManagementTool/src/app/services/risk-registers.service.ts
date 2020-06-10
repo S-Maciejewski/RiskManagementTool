@@ -65,7 +65,7 @@ export class RiskRegistersService {
       name: name,
       description: description
     }
-    this.apiGetService.apiPost(api.create, register).subscribe();
+    return this.apiGetService.apiPost(api.create, register);
   }
 
   updateRegister(id: number, projectId: number, name: string, description: string) {
@@ -75,11 +75,11 @@ export class RiskRegistersService {
       name: name,
       description: description
     }
-    this.apiGetService.apiPost(api.edit + id, registerDetails).subscribe();
+    return this.apiGetService.apiPost(api.edit + id, registerDetails);
   }
 
   deleteRegister(id: number) {
-    this.apiGetService.apiPost(api.delete + id, {}).subscribe();
+    return this.apiGetService.apiPost(api.delete + id, {});
   }
 
 }

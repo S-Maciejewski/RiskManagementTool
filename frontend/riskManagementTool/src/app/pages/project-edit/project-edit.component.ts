@@ -21,7 +21,7 @@ export class ProjectEditComponent implements OnInit {
   ngOnInit(): void {
     this.project = new Project();
     this.getProjectId();
-    this.getProject();    
+    this.getProject();
   }
 
   getProjectId() {
@@ -35,8 +35,10 @@ export class ProjectEditComponent implements OnInit {
   }
 
   public save(): void {
-    this.projectsService.updateProject(this.project.id, this.project.name, this.project.description);
-    this.router.navigate(['/projects/details/' + this.project.id]);
+    this.projectsService.updateProject(this.project.id, this.project.name, this.project.description).subscribe(res => {
+      if (res)
+        this.router.navigate(['/projects/details/' + this.project.id]);
+    });
   }
 
 }
